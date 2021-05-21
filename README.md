@@ -21,3 +21,4 @@ At the end of this course, the participants are expected to:
  * Filter, sub-sample or aggregate specific parts of their data-set
  * Generate clear visual representations to explore data and communicate their findings
  * Implement best-practice as well as recipes to speed-up key bottlenecks in Python programs
+
