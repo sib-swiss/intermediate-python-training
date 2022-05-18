@@ -1,0 +1,19 @@
+{
+  "title": "Material for the intermediate python SIB-training course",
+  "keywords": [
+    "programming",
+    "python",
+    "course",
+    "training"
+  ],
+  "creators": [
+    {
+      "name": "Robin Engler",
+      "affiliation": "SIB Swiss Institute of Bioinformatics"
+    },
+    {
+      "name": "Wandrille Duchemin",
+      "affiliation": "SIB Swiss Institute of Bioinformatics"
+    }   
+  ]
+}
