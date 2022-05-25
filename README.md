@@ -29,7 +29,7 @@ We do not provide an introduction to jupyter notebooks, but you can find numerou
 
 ## Course material organization
 
-The course revolves around a serie of jupyter notebooks which develop different aspect of analysis with python.
+The course revolves around a series of jupyter notebooks which develop different aspect of analysis with python.
 
 Each jupyter notebook interleaves theory and examples of codes. We heartily recommend you execute and play around with these bits of code as you follow along.
 
