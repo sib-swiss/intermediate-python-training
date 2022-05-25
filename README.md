@@ -4,7 +4,7 @@ This course material is part of the "intermediate python" one-day course of [SIB
 
 This course material expects that participants are already familiar familiar with the Python syntax, environment, and the most common commands.
 
-opics that will be covered in this course include:
+Topics that will be covered in this course include:
 
  * Parsing, transforming, and exploring data using Pandas
  * Performing statistical simulation and testing with Numpy/Scipy
@@ -27,7 +27,7 @@ This course also relies on [jupyter notebooks](https://www.jupyter.org/), a web 
 We do not provide an introduction to jupyter notebooks, but you can find numerous short tutorials online (such as [this one](https://github.com/sib-swiss/first-steps-with-python-training/blob/master/notebooks/00_jupyter_setup.ipynb) or [that more in-depth  one](https://mybinder.org/v2/gh/ipython/ipython-in-depth/HEAD?urlpath=tree/binder/Index.ipynb))
 
 
-## course material organization
+## Course material organization
 
 The course revolves around a serie of jupyter notebooks which develop different aspect of analysis with python.
 
