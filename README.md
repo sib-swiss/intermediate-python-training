@@ -24,7 +24,7 @@ In addition to this, you should ensure you have the following libraries installe
 * [numba](https://numba.pydata.org/)
 
 This course also relies on [jupyter notebooks](https://www.jupyter.org/), a web based notebook system for creating and sharing computational documents in an interactive manner.
-We do not provide an introduction to jupyter notebooks, but you can find numerous short tutorials online (such as [this one](https://hub.gke2.mybinder.org/user/ipython-ipython-in-depth-cmbioav7/notebooks/binder/Index.ipynb))
+We do not provide an introduction to jupyter notebooks, but you can find numerous short tutorials online (such as [this one](https://github.com/sib-swiss/first-steps-with-python-training/blob/master/notebooks/00_jupyter_setup.ipynb) or [that more in-depth  one](https://mybinder.org/v2/gh/ipython/ipython-in-depth/HEAD?urlpath=tree/binder/Index.ipynb))
 
 
 ## course material organization
