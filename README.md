@@ -14,7 +14,7 @@ opics that will be covered in this course include:
 
 ## prerequisite installation
 
-You can find [tips and instructions](https://github.com/sib-swiss/first-steps-with-python-training/setting_up_your_environment.md) to ensure you have installed all the required software before starting the course.
+You can find [tips and instructions](https://github.com/sib-swiss/first-steps-with-python-training/blob/master/setting_up_your_environment.md) to ensure you have installed all the required software before starting the course.
 
 In addition to this, you should ensure you have the following libraries installed (using conda for example):
 
