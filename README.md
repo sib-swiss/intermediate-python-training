@@ -1,6 +1,6 @@
 # Intermediate python
 
-This course material is part of the "First Steps with Python in Life Science" three-day course of [SIB Training](https://www.sib.swiss/training/who-can-benefit) and is addressed to life scientists, bioinformaticians and researchers who are familiar with writing Python code and core Python elements, and would like to explore it further in their daily data wrangling and exploration tasks.
+This course material is part of the "intermediate python" one-day course of [SIB Training](https://www.sib.swiss/training/who-can-benefit) and is addressed to life scientists, bioinformaticians and researchers who are familiar with writing Python code and core Python elements, and would like to explore it further in their daily data wrangling and exploration tasks.
 
 This course material expects that participants are already familiar familiar with the Python syntax, environment, and the most common commands.
 
