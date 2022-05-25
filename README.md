@@ -12,21 +12,19 @@ opics that will be covered in this course include:
  * Speeding-up your Python code with Numba and more
 
 
-## prerequisite installation
+## Prerequisite installation
 
-You can find [tips and instructions](https://github.com/sib-swiss/first-steps-with-python-training/setting_up_your_environment.md) to ensure you have installed all the required software before starting the course.
+Please make sure to [setup your computer](https://github.com/sib-swiss/first-steps-with-python-training/blob/master/setting_up_your_environment.md)
+**before the start of the course** to ensure you have installed all the required software.
 
 In addition to this, you should ensure you have the following libraries installed (using conda for example):
+* [pandas](https://pandas.pydata.org/)
+* [seaborn](https://seaborn.pydata.org/)
+* [statsmodels](https://www.statsmodels.org/stable/index.html)
+* [numba](https://numba.pydata.org/)
 
- - [pandas](https://pandas.pydata.org/)
- - [seaborn](https://seaborn.pydata.org/)
- - [statsmodels](https://www.statsmodels.org/stable/index.html)
- - [numba](https://numba.pydata.org/)
-
-
-This course also relies on [jupyter notebooks](https://www.jupyter.org/), a web based notebook system for creating and sharing computational documents in an interactive manner. 
-We do not provide an introduction to jupyter notebooks, but you can find numerous short tutorials online (such as [this one](https://hub.gke2.mybinder.org/user/ipython-ipython-in-depth-cmbioav7/notebooks/binder/Index.ipynb)) 
-
+This course also relies on [jupyter notebooks](https://www.jupyter.org/), a web based notebook system for creating and sharing computational documents in an interactive manner.
+We do not provide an introduction to jupyter notebooks, but you can find numerous short tutorials online (such as [this one](https://hub.gke2.mybinder.org/user/ipython-ipython-in-depth-cmbioav7/notebooks/binder/Index.ipynb))
 
 
 ## course material organization
