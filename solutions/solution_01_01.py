@@ -15,8 +15,8 @@ def getTitle( name ):
 ## use our function on each name to create a new column
 df["Title"] = [getTitle(name) for name in df.Name]
 
-## alternatively, this can also be written using the apply method,
+## alternatively, this can also be written using the map method,
 ## which applies a function to each element in a column:
-df["Title"] = df.Name.apply(getTitle)
+df["Title"] = df.Name.map(getTitle)
 
 df.head()
