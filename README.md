@@ -1,3 +1,7 @@
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6619586.svg)](https://doi.org/10.5281/zenodo.6619586)
+
+
 # Intermediate python
 
 This course material is part of the "intermediate python" one-day course of [SIB Training](https://www.sib.swiss/training/who-can-benefit) and is addressed to life scientists, bioinformaticians and researchers who are familiar with writing Python code and core Python elements, and would like to explore it further in their daily data wrangling and exploration tasks.
@@ -41,3 +45,9 @@ Each jupyter notebook interleaves theory and examples of codes. We heartily reco
 
 
 The data used in the practicals can be found in the data [`notebooks/data`](data/) folder.
+
+
+## Citation
+
+Please cite as:
+Wandrille Duchemin, & Robin Engler. (2022, June 7). Material for the intermediate python SIB-training course. Zenodo. https://doi.org/10.5281/zenodo.6619586
