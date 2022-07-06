@@ -1,0 +1,10 @@
+Name,Sex,Age,Pclass,Survived,Family,Fare,Embarked
+Bjornstrom-Steffansson Mr. Mauritz Hakan,male,28,1,1,0,26.55,S
+Coleff Mr. Peju,male,0,0,7.5,S
+Laroche Miss. Simonne Marie Anne Andree,female,3,2,1,1,41.58,C
+Smith Miss. Marion Elsie,female,40,2,1,0,13,S
+Dooley Mr. Patrick,male,32,3,0,0,7.75,Q
+Kantor Mr. Sinai,male,34,2,0,1,26,S
+Goodwin Miss. Lillian Amy,female,16,3,0,5,46.9,S
+Olsen Mr. Karl Siegwart Andreas,male,42,3,0,0,8.4,S
+Fleming Miss. Margaret,female,,1,1,0,110.88,C
