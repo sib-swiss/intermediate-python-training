@@ -34,10 +34,16 @@ Please make sure to [setup your computer](https://github.com/sib-swiss/first-ste
 **before the start of the course** to ensure you have installed all the required software.
 
 In addition to this, you should ensure you have the following libraries installed (using conda for example):
+
+Course 1:
 * [pandas](https://pandas.pydata.org/)
 * [seaborn](https://seaborn.pydata.org/)
 * [statsmodels](https://www.statsmodels.org/stable/index.html)
+
+Course2:
 * [numba](https://numba.pydata.org/)
+* [cython](https://pypi.org/project/Cython/)
+* [memory-profiler](https://pypi.org/project/memory-profiler/)
 
 This course also relies on [jupyter notebooks](https://www.jupyter.org/), a web based notebook system for creating and sharing computational documents in an interactive manner.
 We do not provide an introduction to jupyter notebooks, but you can find numerous short tutorials online (such as [this one](https://github.com/sib-swiss/first-steps-with-python-training/blob/master/notebooks/00_jupyter_setup.ipynb) or [that more in-depth  one](https://mybinder.org/v2/gh/ipython/ipython-in-depth/HEAD?urlpath=tree/binder/Index.ipynb))
