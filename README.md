@@ -2,17 +2,29 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6619586.svg)](https://doi.org/10.5281/zenodo.6619586)
 
 
-# Intermediate python
+# Intermediate python courses
 
-This course material is part of the "intermediate python" one-day course of [SIB Training](https://www.sib.swiss/training/who-can-benefit) and is addressed to life scientists, bioinformaticians and researchers who are familiar with writing Python code and core Python elements, and would like to explore it further in their daily data wrangling and exploration tasks.
+This repository regroups the course material of two "intermediate python" one-day courses of [SIB Training](https://www.sib.swiss/training/who-can-benefit):
+ 1. Intermediate python - data analysis and representation in python
+ 2. Intermediate python - ~~harder~~ faster better stronger : optimizing python code
 
-This course material expects that participants are already familiar familiar with the Python syntax, environment, and the most common commands.
+> titles are temporary 
 
-Topics that will be covered in this course include:
 
+These courses are addressed to life scientists, bioinformaticians and researchers who are familiar with writing Python code and core Python elements, and would like to explore it further in their daily data wrangling and exploration tasks.
+
+
+The course material expects that participants are already familiar familiar with the Python syntax, environment, and the most common commands.
+
+Topics that covered in this course include:
+
+Course 1:
  * Parsing, transforming, and exploring data using Pandas
  * Performing statistical simulation and testing with Numpy/Scipy
  * Representing data in an efficient and impactful manner using Seaborn
+
+Course 2:
+ * assessing computational resource usage of your code
  * Speeding-up your Python code with Numba and more
 
 
@@ -37,14 +49,21 @@ The course revolves around a series of jupyter notebooks which develop different
 
 Each jupyter notebook interleaves theory and examples of codes. We heartily recommend you execute and play around with these bits of code as you follow along.
 
-
  * [00_python_warmup.ipynb](00_python_warmup.ipynb) : something to help you get in programming mood | check your knowledge of basic python syntax
- * [01_data_manipulation_and_representation.ipynb](01_data_manipulation_and_representation.ipynb) : an in-depth exploration of `pandas`, `matplotlib`, and `seaborn` for tabular data exploration and exposition.
- * [02_statistics_with_python.ipynb](02_statistics_with_python.ipynb) : an overview of statistical testing `scipy.stats` and linear models with `statsmodels`
- * [03_optimising_python.ipynb](03_optimising_python.ipynb) : monitor you code resource usage and make them run faster with `numba` just-in-time compilation and parallelization.
+
+ * Course 1:
+     * [01_data_manipulation.ipynb](course1/01_data_manipulation.ipynb) : an advanced introduction and exploration of `pandas`
+     * [02_data_description_and_representation.ipynb](course1/02_data_description_and_representation.ipynb) : usage of `pandas`, `matplotlib`, and `seaborn` for tabular data exploration and exposition.
+     * [03_statistics_with_python.ipynb](course1/03_statistics_with_python.ipynb) : an overview of statistical testing `scipy.stats` and linear models with `statsmodels`
+ * Course 2:
+     * [01_resource_usage_measure_and_profiling.ipynb](course2/01_resource_usage_measure_and_profiling.ipynb) : code resource usage monitoring and profiling
+     * [02_faster_python.ipynb](course2/02_faster_python.ipynb) : how to make python code run faster, in particular with `numba` and `cython`
+     * [03_multiprocessing_multithreading_python.ipynb](course2/03_multiprocessing_multithreading_python.ipynb) : mltiprocessing and multithreading parallelizayion in python
 
 
-The data used in the practicals can be found in the data [`notebooks/data`](data/) folder.
+The data used in the practicals can be found in the `data/` subfolders of either `course1/` or `course2/`.
+
+Solutions to the exercises (but not micro-exercises) are provided in the `solutions/` subfolders of either `course1/` or `course2/`.
 
 
 ## Citation
