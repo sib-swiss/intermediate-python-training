@@ -8,8 +8,6 @@ This repository regroups the course material of two "intermediate python" one-da
  1. Data analysis and representation in python
  2. Optimizing Python Code for Better Performance
 
-> titles are temporary 
-
 
 These courses are addressed to life scientists, bioinformaticians and researchers who are familiar with writing Python code and core Python elements, and would like to explore it further in their daily data wrangling and exploration tasks.
 
@@ -57,11 +55,11 @@ Each jupyter notebook interleaves theory and examples of codes. We heartily reco
 
  * [00_python_warmup.ipynb](00_python_warmup.ipynb) : something to help you get in programming mood | check your knowledge of basic python syntax
 
- * Course 1:
+ * Course 1: Data analysis and representation in python
      * [01_data_manipulation.ipynb](course1/01_data_manipulation.ipynb) : an advanced introduction and exploration of `pandas`
      * [02_data_description_and_representation.ipynb](course1/02_data_description_and_representation.ipynb) : usage of `pandas`, `matplotlib`, and `seaborn` for tabular data exploration and exposition.
      * [03_statistics_with_python.ipynb](course1/03_statistics_with_python.ipynb) : an overview of statistical testing `scipy.stats` and linear models with `statsmodels`
- * Course 2:
+ * Course 2: Optimizing Python Code for Better Performance
      * [01_resource_usage_measure_and_profiling.ipynb](course2/01_resource_usage_measure_and_profiling.ipynb) : code resource usage monitoring and profiling
      * [02_faster_python.ipynb](course2/02_faster_python.ipynb) : how to make python code run faster, in particular with `numba` and `cython`
      * [03_multiprocessing_multithreading_python.ipynb](course2/03_multiprocessing_multithreading_python.ipynb) : mltiprocessing and multithreading parallelizayion in python
