@@ -5,8 +5,8 @@
 # Intermediate python courses
 
 This repository regroups the course material of two "intermediate python" one-day courses of [SIB Training](https://www.sib.swiss/training/upcoming-training-courses):
- 1. Intermediate python - data analysis and representation in python
- 2. Intermediate python - ~~harder~~ faster better stronger : optimizing python code
+ 1. Data analysis and representation in python
+ 2. Optimizing Python Code for Better Performance
 
 > titles are temporary 
 
@@ -18,12 +18,12 @@ The course material expects that participants are already familiar familiar with
 
 Topics that covered in this course include:
 
-Course 1:
+Course 1: Data analysis and representation in python
  * Parsing, transforming, and exploring data using Pandas
  * Performing statistical simulation and testing with Numpy/Scipy
  * Representing data in an efficient and impactful manner using Seaborn
 
-Course 2:
+Course 2: Optimizing Python Code for Better Performance
  * assessing computational resource usage of your code
  * Speeding-up your Python code with Numba and more
 
@@ -35,12 +35,12 @@ Please make sure to [setup your computer](https://github.com/sib-swiss/first-ste
 
 In addition to this, you should ensure you have the following libraries installed (using conda for example):
 
-Course 1:
+Course 1: Data analysis and representation in python
 * [pandas](https://pandas.pydata.org/)
 * [seaborn](https://seaborn.pydata.org/)
 * [statsmodels](https://www.statsmodels.org/stable/index.html)
 
-Course2:
+Course2: Optimizing Python Code for Better Performance
 * [numba](https://numba.pydata.org/)
 * [cython](https://pypi.org/project/Cython/)
 * [memory-profiler](https://pypi.org/project/memory-profiler/)
