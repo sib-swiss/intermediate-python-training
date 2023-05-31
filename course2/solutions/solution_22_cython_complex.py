@@ -26,7 +26,7 @@ cdef DTYPE_t compute_sequence_similarity_cython2( char* seqA  , char* seqB):
 
 @cython.boundscheck(False) # Turn off bounds-checking for entire function
 @cython.wraparound(False)  # Turn off negative index wrapping for entire function
-def compute_sequence_similarity_Mat_cython2( Lseq ):
+def compute_sequence_similarity_mat_cython2( Lseq ):
     # Here, typing a Lseq as a list of string is quite tedious, so I did not do it
     
     cdef int l = len(Lseq)
@@ -43,10 +43,10 @@ def compute_sequence_similarity_Mat_cython2( Lseq ):
 # Toy dataset.
 testLseq=["AAA","ATA","TTA"]
 print("native implementation")
-print( compute_sequence_similarity_Mat( testLseq ) )
+print( compute_sequence_similarity_mat( testLseq ) )
 print("cython implementation")
-print( np.array( compute_sequence_similarity_Mat_cython2( testLseq ) )) # we have to cast the memory back to an array
+print( np.array( compute_sequence_similarity_mat_cython2( testLseq ) )) # we have to cast the memory back to an array
 
 # Now we time:
-%timeit -n 3 -r 7 _=np.array( compute_sequence_similarity_Mat_cython2(Lseq) )
+%timeit -n 3 -r 7 _=np.array( compute_sequence_similarity_mat_cython2(lseq) )
 # from 270ms to 12.7ms -> x21 speedup!

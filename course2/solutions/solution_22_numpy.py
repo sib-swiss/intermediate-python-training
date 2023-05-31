@@ -30,7 +30,7 @@ def compute_sequence_similarity_mat_numpy(lseq):
 #toy dataset
 test_lseq = ["AAA", "ATA", "TTA"]
 print("native implementation")
-print(compute_sequence_similarity_Mat(test_lseq))
+print(compute_sequence_similarity_mat(test_lseq))
 
 print("numpy implementation")
 print(compute_sequence_similarity_mat_numpy(test_lseq))

@@ -13,7 +13,7 @@ def compute_sequence_similarity_numba(seqA  ,seqB):
     return similar/l
 
 @jit(nopython=True)
-def compute_sequence_similarity_Mat_numba(Lseq):
+def compute_sequence_similarity_mat_numba(Lseq):
     # compute similarity between all sequence pair
     sim = np.zeros( ( len(Lseq),len(Lseq) ) )
     for i,s1 in enumerate(Lseq):
@@ -30,17 +30,17 @@ from numba.typed import List
 def interface_numba_sequence_similarity( Lseq ):
     Lseq_typed = List()
     [Lseq_typed.append(x) for x in Lseq]
-    return compute_sequence_similarity_Mat_numba(Lseq_typed)
+    return compute_sequence_similarity_mat_numba(Lseq_typed)
 
 
 # Toy dataset.
 testLseq=["AAA","ATA","TTA"]
 print("native implementation")
-print( compute_sequence_similarity_Mat( testLseq ) )
+print( compute_sequence_similarity_mat( testLseq ) )
 print("numba implementation")
 print( interface_numba_sequence_similarity( testLseq ) )
 
 # now we time:
-%timeit -n 3 -r 7 _=interface_numba_sequence_similarity(Lseq)
+%timeit -n 3 -r 7 _=interface_numba_sequence_similarity(lseq)
 # well, it is actually slower... (~600ms, vs ~270ms for the native)
 # sometimes numba is not able to work its magic

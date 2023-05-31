@@ -1,7 +1,9 @@
-%%cython --annotate
+%%cython --annotate 
+# put that at the cell's top
 
 # Here we will use the cython tricks we have already seen.
-# mostly typing # python string can simply be typed 'str' for simplicity .
+# mostly typing 
+# python string can simply be typed 'str' for simplicity .
 
 import numpy as np
 cimport numpy as np
@@ -9,8 +11,6 @@ cimport cython
 DTYPE = np.float64
 ctypedef np.float64_t DTYPE_t
 
-@cython.boundscheck(False) # Turn off bounds-checking for entire function
-@cython.wraparound(False)  # Turn off negative index wrapping for entire function
 cdef DTYPE_t compute_sequence_similarity_cython( str seqA  , str seqB):
     """compute similarity between 2 sequence as the fraction of position where they have the same value"""
     cdef int l = len(seqA)
@@ -20,9 +20,7 @@ cdef DTYPE_t compute_sequence_similarity_cython( str seqA  , str seqB):
             similar += 1
     return similar/l
 
-@cython.boundscheck(False) # Turn off bounds-checking for entire function
-@cython.wraparound(False)  # Turn off negative index wrapping for entire function
-def compute_sequence_similarity_Mat_cython( Lseq ):
+def compute_sequence_similarity_mat_cython( Lseq ):
     # Here, typing a Lseq as a list of string is quite tedious, so I did not do it
     
     cdef int l = len(Lseq)
@@ -37,10 +35,10 @@ def compute_sequence_similarity_Mat_cython( Lseq ):
 # Toy dataset
 testLseq=["AAA","ATA","TTA"]
 print("native implementation")
-print( compute_sequence_similarity_Mat( testLseq ) )
+print( compute_sequence_similarity_mat( testLseq ) )
 print("cython implementation")
-print( np.array( compute_sequence_similarity_Mat_cython( testLseq ) )) # we have to cast the memory back to an array
+print( np.array( compute_sequence_similarity_mat_cython( testLseq ) )) # we have to cast the memory back to an array
 
 # Now we time:
-%timeit -n 3 -r 7 _=np.array( compute_sequence_similarity_Mat_cython(Lseq) )
+%timeit -n 3 -r 7 _=np.array( compute_sequence_similarity_mat_cython(lseq) )
 # from 270ms to 24ms -> x11 speedup!
