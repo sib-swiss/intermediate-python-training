@@ -17,12 +17,13 @@ sns.histplot(df["Age"], bins= np.arange(0, 85, 2.5))
 
 # 2. Create a figure with 3 panels. In the panels, plot the histogram of the
 # `Fare` among passengers in first, second, and third class, respectively.
-fig, ax = plt.subplots(3, 1, figsize=(10,10))
+fig, ax = plt.subplots(3, 1, figsize=(10,10),sharex=True)
 
 for i, pclass in enumerate([1,2,3]):
-    sns.histplot( df.loc[df["Pclass"] == pclass, 'Fare'] , ax = ax[i])
+    sns.histplot( df.loc[df["Pclass"] == pclass, 'Fare'] , ax = ax[i], binwidth = 10)
     ax[i].set_title("passenger class {}".format(pclass))
-
+    ax[i].xaxis.grid() # vertical lines
 # Makes the different subplot organize better - no collision between labels,
 # titles, etc.
+
 plt.tight_layout() 

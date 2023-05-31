@@ -1,6 +1,7 @@
 # Exercise 3.1
 # ************
 import pandas as pd
+import scipy.stats as stats
 
 # Load the swiss census data from 1880 and display its first few rows.
 df_census = pd.read_csv("data/census1880_fractions.csv")
@@ -20,3 +21,10 @@ print("Chi-square contingency p-value: {:.1e}".format(pval))
 
 # To use Fisher's exact test here, we could regroup different categories,
 # or perform the test with different couple of categories
+# -> the first option is not obvious here (which to merge?), so we go with the second one
+
+subTable = table.iloc[:,:2] # keep french and german speakers only
+oddsratio , pvalue = stats.fisher_exact(subTable)
+print("Fisher's exact test on sub-table")
+print('\todds ratio:',oddsratio)
+print('\tp-value:',pvalue)

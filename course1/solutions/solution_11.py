@@ -1,9 +1,9 @@
 import pandas as pd
 
-# Load the data as DataFrame.
+# 1. Load the data as a pandas DataFrame.
 df = pd.read_table("data/titanic.csv", sep=",")
 
-# 1. Select passengers which survived. How many are males/females?
+# 2. Select passengers which survived. How many are males/females?
 survived = df.Survived == 1
 survivors = df.loc[survived, "Sex"].value_counts()
 for gender in survivors.index:
@@ -17,7 +17,7 @@ for gender in survivors.index:
     print(f"Number of surviving {gender}: {survivors[gender]} [{survival_rate:.1f}%]")
 
 
-# 2. Create a new column named "Title" in the DataFrame, representing
+# 3. Create a new column named "Title" in the DataFrame, representing
 #    the title by which passengers should be addressed. The title can
 #    be found in the passenger name and is the only word ending with a '.'
 

@@ -32,9 +32,9 @@ print(
 )
 
 
-# Alternative implementation using statistics.mean()
+# Alternative implementation using .isna()
 def custom_mean_2(seq):
-    return statistics.mean([x for x in seq if not math.isnan(x)])
+    return statistics.mean(seq[~seq.isna()])
 
 
 # Apply `custom_mean_2()` function to both the "Age" and "Fare" columns.
