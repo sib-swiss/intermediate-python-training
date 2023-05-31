@@ -68,5 +68,5 @@ g.fig.subplots_adjust(hspace=-0.25)
 # Remove axes details that don't play well with overlap.
 g.set_titles("")
 g.set(yticks=[], ylabel="")
-g.set(xlabel="fraction of people over 60 in 1880")
+g.set(xlabel="fraction of people over 60 in 1880 - distribution by towns")
 g.despine(bottom=True, left=True)
