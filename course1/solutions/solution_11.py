@@ -4,23 +4,25 @@ import pandas as pd
 df = pd.read_table("data/titanic.csv", sep=",")
 
 # 2. Select passengers which survived. How many are males/females?
-survived = df.Survived == 1
-survivors = df.loc[survived, "Sex"].value_counts()
-for gender in survivors.index:
-    print(f"Number of surviving {gender}: {survivors[gender]}")
+df.loc[df.Survived == 1, "Sex"].value_counts()
 
 # Bonus: compute the survival rates among women/men.
-# Note: "survival_rate:.1f" allows to format the number so it becomes rounded
-# at 1 digit after the decimal.
-for gender in survivors.index:
-    survival_rate = survivors[gender] / sum(df["Sex"] == gender) * 100
-    print(f"Number of surviving {gender}: {survivors[gender]} [{survival_rate:.1f}%]")
+# Note: "survival_rate:.2f" allows to format the number so it becomes rounded
+# at 2 digit after the decimal.
+for gender in df.Sex.unique():
+    mask = df.Sex == gender
+    survivor_count = sum(df.Survived[mask])
+    survival_rate = survivor_count / sum(mask)
+    print(f"Number of surviving {gender}: {survivor_count} [{survival_rate:.2f}%]")
+
+# Bonus: the easiest way to compute the number of female and male survivors,
+# as well as the survival rates, is to use the `.groupby()` method.
+df.groupby("Sex").Survived.sum()  # Total male/female survivors.
+df.groupby("Sex").Survived.mean()  # Survival rates by gender.
 
 
 # 3. Create a new column named "Title" in the DataFrame, representing
-#    the title by which passengers should be addressed. The title can
-#    be found in the passenger name and is the only word ending with a '.'
-
+#    the title by which passengers should be addressed.
 # First we create a short function that extracts a passenger title from
 # its name.
 def get_passenger_title(name):
@@ -31,18 +33,32 @@ def get_passenger_title(name):
     for word in split_name:
         if word.endswith("."):
             return word
-    else:
-        return 'no_title'
-    
-# Use our function on each name to create the new "Title" column.
-df["Title"] = [get_passenger_title(name) for name in df["Name"]]
+
+    return "no_title"
+
+
+# Then we can apply our custom function to each element of the "Name" column
+# using the `.map()` method of pandas Series.
+df["Title"] = df["Name"].map(get_passenger_title)
 df.head()
 
 # To quickly check the list of unique values stored in "Title" (can be
 # useful to check if we have a bad value in our column).
-print(set(df["Title"]))
+df.Title.unique()
+print(set(df["Title"]))  # Alternatively.
 
-# Alternatively, this can also be written using the pandas "apply()"
-# method, which applies a function to each element of a column:
-df["Title"] = df["Name"].apply(get_passenger_title)
+
+# Note: an alternative way of applying the `get_passenger_title()` function
+# to the name column would be to use a list comprehension.
+# However, this method is SLOWER than using the `.map()` method and you
+# should always AVOID AS MUCH AS POSSIBLE this type of non-vectorized
+# operations.
+df["Title"] = [get_passenger_title(name) for name in df["Name"]]
 df.head()
+
+
+# Alternative implementation of the "get_passenger_title" function.
+def get_passenger_title(name):
+    if "." not in name:
+        return "no_title"
+    return name.split(".")[0].split(" ")[-1]
