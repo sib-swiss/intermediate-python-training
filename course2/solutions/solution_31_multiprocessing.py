@@ -48,11 +48,12 @@ print("data parts results:",S1 , S2)
 # of course at the end you want to sum
 print("final result:", S1+S2)
 
-# Now, to be applied with map, we will make a specific version of the task with a and dx fixed
+# Now, to be applied with map, we will make a specific version of the task
+# with a and dx fixed
+def task_specific(data):
+    return task(data , a , dx)
 
-task_specific = lambda data : task(data , a , dx)
-
-print("no multiprocessing")
+print("no multiprocessing:", end="")
 %time list(map(task_specific, data_parts))
 
 # With 1 process it should take ~ 4 seconds.
