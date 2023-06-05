@@ -6,6 +6,11 @@ df = pd.read_table("data/titanic.csv", sep=",")
 # 2. Select passengers which survived. How many are males/females?
 df.loc[df.Survived == 1, "Sex"].value_counts()
 
+# Alternative solution using a for loop:
+for gender in df.Sex.unique():
+    mask_survived = (df.Survived == 1) & (df.Sex == gender)
+    print(f"Number of surviving {gender}: {df.loc[mask_survived, ].shape[0]}")
+
 # Bonus: compute the survival rates among women/men.
 # Note: "survival_rate:.2f" allows to format the number so it becomes rounded
 # at 2 digit after the decimal.
