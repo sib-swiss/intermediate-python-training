@@ -26,7 +26,9 @@ def sequence_similarity_mat_numba(lseq):
 # Following the recommendation, let's write an interfacing function.
 from numba.typed import List
 def interface_numba_sequence_similarity(lseq):
-    return sequence_similarity_mat_numba(List(lseq))
+    typed_a = List()
+    [typed_a.append(x) for x in lseq]
+    return sequence_similarity_mat_numba(typed_a)
 
 
 # Verify that both implementations give the same result.
