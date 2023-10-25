@@ -42,6 +42,12 @@ def get_passenger_title(name):
     return "no_title"
 
 
+# Alternative implementation of the "get_passenger_title" function.
+def get_passenger_title(name):
+    if "." not in name:
+        return "no_title"
+    return name.partition(".")[0].rpartition(" ")[-1]
+
 # Then we can apply our custom function to each element of the "Name" column
 # using the `.map()` method of pandas Series.
 df["Title"] = df["Name"].map(get_passenger_title)
@@ -61,9 +67,3 @@ print(set(df["Title"]))  # Alternatively.
 df["Title"] = [get_passenger_title(name) for name in df["Name"]]
 df.head()
 
-
-# Alternative implementation of the "get_passenger_title" function.
-def get_passenger_title(name):
-    if "." not in name:
-        return "no_title"
-    return name.split(".")[0].split(" ")[-1]
