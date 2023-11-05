@@ -1,4 +1,4 @@
-Year,town number,town name,Total,Swiss,Foreigner,Male,Female,0-14 y.o.,15-59 y.o.,60+ y.o.,Reformed,Catholic,Other,German speakers,Franch speakers,Italian speakers,Romansche speakers,Non-national tongue speakers,district number,district name,canton number,canton,canton name
+Year,town number,town name,Total,Swiss,Foreigner,Male,Female,0-14 y.o.,15-59 y.o.,60+ y.o.,Reformed,Catholic,Other,German speakers,French speakers,Italian speakers,Romansch speakers,Non-national tongue speakers,district number,district name,canton number,canton,canton name
 1880,1,Aeugst,646,627,19,319,327,217,379,50,588,43,15,645,0,1,0,0,101,Affoltern,1,ZH,Zürich
 1880,2,Affoltern am Albis,2201,2088,113,1055,1146,713,1331,157,1942,216,43,2193,5,3,0,0,101,Affoltern,1,ZH,Zürich
 1880,3,Bonstetten,771,754,17,361,410,266,449,56,747,20,4,771,0,0,0,0,101,Affoltern,1,ZH,Zürich

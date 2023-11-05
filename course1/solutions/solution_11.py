@@ -12,13 +12,14 @@ for gender in df.Sex.unique():
     print(f"Number of surviving {gender}: {df.loc[mask_survived, ].shape[0]}")
 
 # Bonus: compute the survival rates among women/men.
-# Note: "survival_rate:.2f" allows to format the number so it becomes rounded
-# at 2 digit after the decimal.
+# Note: ":.1f" allows to format the number so it becomes rounded at 1 digit
+# after the decimal.
 for gender in df.Sex.unique():
     mask = df.Sex == gender
     survivor_count = sum(df.Survived[mask])
-    survival_rate = survivor_count / sum(mask)
-    print(f"Number of surviving {gender}: {survivor_count} [{survival_rate:.2f}%]")
+    print(
+        f"Number of surviving {gender}: {survivor_count} [{survivor_count / sum(mask) * 100:.1f}%]"
+    )
 
 # Bonus: the easiest way to compute the number of female and male survivors,
 # as well as the survival rates, is to use the `.groupby()` method.
@@ -32,21 +33,14 @@ df.groupby("Sex").Survived.mean()  # Survival rates by gender.
 # its name.
 def get_passenger_title(name):
     """Takes a name and return the appropriate title. Only works if
-    the title is the only word in the name ending with a "."
+    the title is the first word in the input string ending with a ".".
     """
-    split_name = name.split()
-    for word in split_name:
+    for word in name.split():
         if word.endswith("."):
             return word
 
     return "no_title"
 
-
-# Alternative implementation of the "get_passenger_title" function.
-def get_passenger_title(name):
-    if "." not in name:
-        return "no_title"
-    return name.partition(".")[0].rpartition(" ")[-1]
 
 # Then we can apply our custom function to each element of the "Name" column
 # using the `.map()` method of pandas Series.
@@ -67,3 +61,9 @@ print(set(df["Title"]))  # Alternatively.
 df["Title"] = [get_passenger_title(name) for name in df["Name"]]
 df.head()
 
+
+# Alternative implementation of the "get_passenger_title" function.
+def get_passenger_title(name):
+    if "." not in name:
+        return "no_title"
+    return name.partition(".")[0].rpartition(" ")[-1]
