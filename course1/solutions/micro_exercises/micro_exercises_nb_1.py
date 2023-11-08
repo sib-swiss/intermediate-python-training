@@ -182,3 +182,27 @@ df.head()
 # function).
 df["Embarked_city"] = df["Embarked"].map({"C": "Cherbourg", "Q": "Queenstown", "S": "Southampton"})
 # *****************************************************************************
+
+
+# *****************************************************************************
+# Micro-Exercise A4
+# *****************
+
+def age_category(x):
+    age_classes = {"child": 12, "teenager": 17, "adult": 64, "senior": 200}
+    for label, threshold in age_classes.items():
+        if x <= threshold:
+            return label
+
+
+# Make a copy of the "df" DataFrame.
+dfc = df.copy()
+
+# Add a new column "Age_category".
+dfc["Age_category"] = df["Age"].map(age_category)
+# or
+dfc["Age_category"] = df["Age"].apply(age_category)
+
+# Compute survival rates by gender, age category and passenger class.
+dfc.groupby(["Sex", "Age_category", "Pclass"]).mean()
+# *****************************************************************************
