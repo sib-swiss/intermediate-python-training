@@ -1,0 +1,184 @@
+# Course 1 - Notebook 1 micro-exercise corrections
+# ******************************************************************************
+import numpy as np
+import pandas as pd
+
+# ******************************************************************************
+# Micro-Exercise 1
+# ****************
+# Find the `read_table` option to read CSV files.
+help(pd.read_table)
+
+df = pd.read_table("data/titanic.csv", sep=",")
+df.head()
+
+# Note that by setting "sep=None", it is possible to ask pandas to try and
+# auto-detect the separator.
+df = pd.read_table("data/titanic.csv", sep=None, engine="python")
+df.head()
+
+# Alternatively, we can also use `pd.read_csv()`
+df = pd.read_csv("data/titanic.csv")
+df.head()
+
+# ******************************************************************************
+
+
+# *****************************************************************************
+# Micro-Exercise 2
+# ****************
+# We can use a shell command to have a look at the file:
+#  ! zcat data/pbmc_data.countMatrix.50.txt.zip | head -n5
+
+# If we want to consider the first column, "gene", as a regular colum.
+# Note: pandas auto-detect .zip files, and so in principle `compression="zip"`
+# can also be omitted as argument.
+df = pd.read_table("data/pbmc_data.countMatrix.50.txt.zip", compression="zip", sep=" ")
+df.head()
+
+# If we want to consider the first column, "gene", as the row names.
+df = pd.read_table(
+    "data/pbmc_data.countMatrix.50.txt.zip", compression="zip", sep=" ", index_col=0
+)
+# Or
+df = pd.read_table(
+    "data/pbmc_data.countMatrix.50.txt.zip",
+    compression="zip",
+    sep=" ",
+    index_col="gene",
+)
+df.head()
+
+# *****************************************************************************
+
+
+# *****************************************************************************
+# Micro-Exercise 3
+# ****************
+# Curate a badly formatted data set.
+
+# Remove the trailing "%" sign and convert to an integer.
+percent_column = pd.Series(np.random.randint(0, 100, 100), dtype="str") + "%"
+
+# Check the type is really "Object", also abbreviated 'O'.
+print("Type of the Series:", percent_column.dtype)
+
+# Solution using pandas DataFrame methods.
+new_column = percent_column.str.strip("%").astype(int)
+print("Type of the Series:", new_column.dtype)
+new_column.head()
+
+# Solution using base python.
+new_column = pd.Series([int(x.strip("%")) for x in percent_column])
+print("Type of the Series:", new_column.dtype)
+new_column.head()
+
+# Solution that updates values in the existing series.
+percent_column.update([int(x.strip("%")) for x in percent_column])
+percent_column = percent_column.astype(int)
+print("Type of the Series:", percent_column.dtype)
+percent_column
+
+# Benchmarking:
+%timeit percent_column.str.strip("%").astype(int)
+%timeit pd.Series([int(x.strip("%")) for x in percent_column])
+
+# *****************************************************************************
+
+
+# *****************************************************************************
+# Micro-Exercise 4
+# ****************
+# Select all odd rows from the Titanic data frame, as well as the columns
+# "Name", "Age" and "Fare".
+df.loc[range(1, df.shape[0], 2), ["Name", "Age", "Fare"]]
+
+# Re-order the columns so that "Age" is first and "Name" is second.
+df.loc[range(1, df.shape[0], 2), ["Age", "Name", "Fare"]]
+
+# Same, but using .iloc[]
+df.iloc[range(1, df.shape[0], 2), [0, 2, 6]]
+df.iloc[range(1, df.shape[0], 2), df.columns.get_indexer(("Name", "Age", "Fare"))]
+
+# Using a conditional selection.
+df.loc[(df.index % 2) == 1, ["Name", "Age", "Fare"]]
+
+# *****************************************************************************
+
+
+# *****************************************************************************
+# Micro-Exercise 5
+# ****************
+# Select the fare and name of passengers in first class (Pclass is 1) that
+# are less than 18 years old.
+mask = (df.Age < 18) & (df.Pclass == 1)
+df.loc[mask, ["Name", "Fare"]]
+
+# What fraction survived.
+df.loc[mask, "Survived"].value_counts()[1] / df.loc[mask, "Survived"].shape[0]
+df.loc[mask, ].Survived.value_counts()[1] / df.loc[mask, ].Survived.shape[0]
+
+# A better way to do it (but we have not seen it at this point of the notebook).
+df.loc[mask, "Survived"].mean()
+df.loc[mask, ].Survived.mean()
+
+# Number of women and children:
+mask = (df.Age < 18) | (df.Sex == "female")
+print("Number of women and children:", df.loc[mask, ].shape[0])
+
+# Compute the median ticket price for men and women.
+for gender in ("female", "male"):
+    print(f"Median ticket price for {gender}", df.loc[df.Sex == gender, "Fare"].median())
+# *****************************************************************************
+
+
+# *****************************************************************************
+# Micro-Exercise 6
+# ****************
+# Load the titanic dataset as a DataFrame and display it for reference.
+df = pd.read_csv("data/titanic.csv")
+df.iloc[[0, 1, 2, 3, 4, 10, 27],]      # List some more children.
+
+# Divide by 2 the fare of passengers < 10 years old.
+mask = df.Age < 10
+df.loc[mask, "Fare"] /= 2
+df.iloc[[0, 1, 2, 3, 4, 10, 27],]     # List some more children.
+
+
+# Create a mask to filter the Swiss census 1880 dataset for towns that have a
+# majority of Italian and Romansh speakers.
+# In which cantons are these towns located, and how many are in each canton?
+df_census = pd.read_csv("data/swiss_census_1880.csv")
+mask = ((df_census["Italian speakers"] + df_census["Romansch speakers"]) / df_census.Total) > 0.5
+df_census.loc[mask,]
+df_census.loc[mask,"canton"].value_counts()
+# *****************************************************************************
+
+
+# *****************************************************************************
+# Micro-Exercise 7
+# ****************
+# Add a new column to the DataFrame that contains the full name of the port of
+# embarkation of each passenger.
+
+# Load the dataset.
+df = pd.read_csv("data/titanic.csv")
+df.head()
+
+# Function that expands the port of embarkation abbreviation.
+def expand_port_of_embarkation(input_value):
+    """Converts the abbreviated port of embarkation to its full name."""
+    abbreviations = {"C": "Cherbourg", "Q": "Queenstown", "S": "Southampton"}
+    return abbreviations.get(input_value, None) if len(str(input_value)) == 1 else input_value
+
+
+# Apply the custom function to each value of the "Embarked" column.
+df["Embarked_city"] = df["Embarked"].map(expand_port_of_embarkation)
+df.head()
+
+
+# Note: an even better solution in this specific case, is to use the ability
+# of .map() to directly take a dictionary as input argument (instead of a
+# function).
+df["Embarked_city"] = df["Embarked"].map({"C": "Cherbourg", "Q": "Queenstown", "S": "Southampton"})
+# *****************************************************************************

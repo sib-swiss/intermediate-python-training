@@ -15,18 +15,18 @@ researchers who are familiar with writing Python code and core Python elements,
 and would like to explore it further in their daily data wrangling and
 exploration tasks.
 
-The course material expects that participants are already familiar with basic
-Python syntax, environment, and the most common commands.
+Please note that the courses require that participants are already familiar
+with basic Python syntax, environment, and the most common commands.
 
 Topics covered in these courses include:
 
-**Course 1 - Data analysis and representation in python:**
+**Data analysis and representation in python:**
 
 * Parsing, transforming, and exploring data using [Pandas](https://pandas.pydata.org).
 * Performing statistical simulation and testing with Numpy/Scipy.
 * Representing data in an efficient and impactful manner using Seaborn.
 
-**Course 2 - Optimizing Python Code for Better Performance:**
+**Optimizing Python Code for Better Performance:**
 
 * Assessing computational resource usage of your code.
 * Speeding-up your Python code with Numba and more.
@@ -38,9 +38,8 @@ Topics covered in these courses include:
 
 ### Prerequisite knowledge
 
-The course material expects that participants are already familiar with basic
-Python syntax, environment, and the most common commands. This means that we
-expect participants to be familiar with concepts such as:
+Participants are expected to be familiar with basic Python syntax, concepts,
+and the most common commands, such as:
 
 * Basic data types such as `list`, `tuple`, or `dict`, and their basic methods.
 * Flow control such as loops (`for`, `while`) and `if ... else` structures.
@@ -52,11 +51,13 @@ These courses also rely on [Jupyter Notebooks](https://www.jupyter.org), a
 web based notebook system for creating and sharing computational documents in
 an interactive manner.
 
-These courses will **not** provide an introduction to Jupyter Notebooks, so if
+The courses do **not** provide an introduction to Jupyter Notebooks, so if
 you are not familiar with them we recommend to go through a short tutorial
 such as
 [this one](https://github.com/sib-swiss/first-steps-with-python-training/blob/master/notebooks/00_jupyter_setup.ipynb)
 or [that more in-depth one](https://mybinder.org/v2/gh/ipython/ipython-in-depth/HEAD?urlpath=tree/binder/Index.ipynb).
+
+<br>
 
 ### Software installation
 
@@ -92,11 +93,12 @@ Each jupyter notebook interleaves theory and examples of codes. We heartily
 recommend you execute and play around with these bits of code as you follow
 along.
 
-* [00_python_warmup.ipynb](00_python_warmup.ipynb):
-  something to help you get in programming mood, and check your knowledge of
-  basic python syntax
+* **Prerequisite:**
+  * [00_python_warmup.ipynb](00_python_warmup.ipynb):
+    something to help you get in programming mood, and check your knowledge of
+    basic python syntax.
 
-* Course 1 - Data analysis and representation in python:
+* **Course 1** - Data analysis and representation in python:
   * [01_data_manipulation.ipynb](course1/01_data_manipulation.ipynb):
     an introduction and exploration of [`pandas`](https://pandas.pydata.org).
   * [02_data_description_and_representation.ipynb](course1/02_data_description_and_representation.ipynb):
@@ -106,7 +108,7 @@ along.
     an overview of statistical testing `scipy.stats` and linear models with
     `statsmodels`.
 
-* Course 2 - Optimizing Python Code for Better Performance:
+* **Course 2** - Optimizing Python Code for Better Performance:
   * [01_resource_usage_measure_and_profiling.ipynb](course2/01_resource_usage_measure_and_profiling.ipynb):
     code resource usage monitoring and profiling.
   * [02_faster_python.ipynb](course2/02_faster_python.ipynb): making python
@@ -114,11 +116,19 @@ along.
   * [03_multiprocessing_multithreading_python.ipynb](course2/03_multiprocessing_multithreading_python.ipynb):
     multiprocessing and multithreading parallelization in python.
 
-The data used in the practicals can be found in the `data/` subdirectories of
-either `course1/` or `course2/`.
+**The data** used in the practicals can be found in the `data/` subdirectories
+of `course1/` or `course2/`.
 
-Solutions to the exercises (but not micro-exercises) are provided in the
-`solutions/` subdirectories of either `course1/` or `course2/`.
+**Solutions to the exercises:**
+
+* For regular exercises, solutions can be loaded directly from the exercise
+  notbooks. The actual files are located in the `solutions/` subdirectories
+  of `course1/` or `course2/`.
+* For micro-exercises, solutions can be found in the
+  `solutions/micro_exercises` subdirectories of `course1/` or `course2/`.
+
+<br>
+<br>
 
 ## Citation
 
