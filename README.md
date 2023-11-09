@@ -122,7 +122,7 @@ of `course1/` or `course2/`.
 **Solutions to the exercises:**
 
 * For regular exercises, solutions can be loaded directly from the exercise
-  notbooks. The actual files are located in the `solutions/` subdirectories
+  notebooks. The actual files are located in the `solutions/` subdirectories
   of `course1/` or `course2/`.
 * For micro-exercises, solutions can be found in the
   `solutions/micro_exercises` subdirectories of `course1/` or `course2/`.
