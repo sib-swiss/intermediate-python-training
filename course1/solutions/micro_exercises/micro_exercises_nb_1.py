@@ -112,11 +112,13 @@ df.loc[(df.index % 2) == 1, ["Name", "Age", "Fare"]]
 # Select the fare and name of passengers in first class (Pclass is 1) that
 # are less than 18 years old.
 mask = (df.Age < 18) & (df.Pclass == 1)
+mask_survived = (df.Age < 18) & (df.Pclass == 1) & (df.Survived == 1)
 df.loc[mask, ["Name", "Fare"]]
 
 # What fraction survived.
-df.loc[mask, "Survived"].value_counts()[1] / df.loc[mask, "Survived"].shape[0]
-df.loc[mask, ].Survived.value_counts()[1] / df.loc[mask, ].Survived.shape[0]
+df.loc[mask_survived, ].shape[0] / df.loc[mask, ].shape[0]
+# or
+sum(mask_survived) / sum(mask)
 
 # A better way to do it (but we have not seen it at this point of the notebook).
 df.loc[mask, "Survived"].mean()
@@ -137,12 +139,12 @@ for gender in ("female", "male"):
 # ****************
 # Load the titanic dataset as a DataFrame and display it for reference.
 df = pd.read_csv("data/titanic.csv")
-df.iloc[[0, 1, 2, 3, 4, 10, 27],]      # List some more children.
+df.loc[[0, 1, 2, 3, 4, 10, 27],]      # List some more children.
 
 # Divide by 2 the fare of passengers < 10 years old.
 mask = df.Age < 10
 df.loc[mask, "Fare"] /= 2
-df.iloc[[0, 1, 2, 3, 4, 10, 27],]     # List some more children.
+df.loc[[0, 1, 2, 3, 4, 10, 27],]     # List some more children.
 
 
 # Create a mask to filter the Swiss census 1880 dataset for towns that have a
