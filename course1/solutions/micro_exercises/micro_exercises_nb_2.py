@@ -1,6 +1,5 @@
 # Course 1 - Notebook 2 micro-exercise corrections
 # ******************************************************************************
-import numpy as np
 import pandas as pd
 
 # ******************************************************************************
@@ -49,35 +48,10 @@ print("Are all columns sums == 1 after normalization:", all(df_normalized.sum() 
 # ****************
 # Load the Titanic dataset.
 df = pd.read_csv("data/titanic.csv")
-df.head()
 
-# Make a copy of the dataset and compute the "Age_category" column values.
-dfc = df.copy()
+# Compute the mean fare by passenger class.
+df.groupby("Pclass").Fare.mean()
 
-
-def age_category(x):
-    age_classes = {"child": 12, "teenager": 17, "adult": 64, "senior": 200}
-    for label, threshold in age_classes.items():
-        if x <= threshold:
-            return label
-
-
-dfc["Age_category"] = dfc.Age.map(age_category)
-dfc.head()
-
-
-# Compute the survival rate by age, gender and passenger class.
-dfc.groupby(["Sex", "Pclass", "Age_category"]).Survived.mean()
-
-# Create a DataFrame that contains both the survival rates and the counts
-# (i.e. number of people) per category.
-grouped = dfc.groupby(["Sex", "Pclass", "Age_category"])
-survival_rates = pd.DataFrame(
-    [grouped["Survived"].count(), grouped["Survived"].mean()],
-    index=["Counts", "Survival_rate"],
-).transpose()
-survival_rates["Counts"] = survival_rates["Counts"].astype(int)
-survival_rates["Survival_rate"] = survival_rates["Survival_rate"].round(2)
-survival_rates
-
+# Compute the mean fare for all combinations of passenger class and gender.
+df.groupby(["Pclass", "Sex"]).Fare.mean()
 # ******************************************************************************
