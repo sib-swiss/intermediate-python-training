@@ -19,8 +19,8 @@ def sequence_similarity_numpy(seq_A, seq_B):
     positions where they have the same value.
     The input arguments must be numpy arrays.
     """
-    # Check equality of each individual element with == and
-    # then mean() returns the fraction of element with were equal.
+    # Check equality of each individual element with `==`.
+    # `.mean()` returns the fraction of elements that are equal.
     return (seq_A == seq_B).mean()
 
 
@@ -38,7 +38,6 @@ def sequence_similarity_mat_numpy(lseq):
 # Verify that both implementations give the same result.
 # Create a test dataset
 lseq = [''.join(np.random.choice(list("ATGC"), 500)) for x in range(100)]
-
 print(
     "Do both implementation give the same result?",
     np.allclose(
@@ -70,10 +69,10 @@ def sequence_similarity_mat_numpy(lseq):
     sim_matrix = np.zeros((len(lseq),) * 2)   
     for i, s1 in enumerate(lseq_np):
         for j, s2 in enumerate(lseq_np):
-            if i <= j:
-                sim_matrix[i, j] = sequence_similarity_numpy(s1, s2)
-            else:
-                sim_matrix[i, j] = sim_matrix[j, i]
+            if i < j:
+                continue
+            sim_matrix[i, j] = sequence_similarity_numpy(s1, s2)
+            sim_matrix[j, i] = sim_matrix[i, j]
     return sim_matrix
 
 # Verify that both implementations give the same result.
