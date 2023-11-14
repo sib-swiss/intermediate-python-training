@@ -1,5 +1,7 @@
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7991203.svg)](https://doi.org/10.5281/zenodo.7991203)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10124583.svg)](https://doi.org/10.5281/zenodo.10124583)
+
+
 
 # Intermediate python courses
 
@@ -133,6 +135,4 @@ of `course1/` or `course2/`.
 ## Citation
 
 Please cite as:
-Robin Engler, Wandrille Duchemin, & Mathilde Goullieux. (2023, May 31).
-Material for the intermediate python SIB-training course.
-Zenodo. <https://doi.org/10.5281/zenodo.7991203>
+Robin Engler, & Wandrille Duchemin. (2023, November 14). Material for the intermediate python SIB-training course. Zenodo. <https://doi.org/10.5281/zenodo.10124583>
