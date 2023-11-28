@@ -132,6 +132,17 @@ of `course1/` or `course2/`.
 <br>
 <br>
 
+## Course recording videos
+
+We recorded  the last edition of these courses in November 2023 and organized them into two playlists:
+
+ * [Data analysis and representation in python playlist](https://www.youtube.com/playlist?list=PLoCxWrRWjqB1_2WXqR7rnJ1plqp5Ma0bJ)
+ * [Optimizing Python Code for Better Performance playlist](https://www.youtube.com/playlist?list=PLoCxWrRWjqB0YUVsRSA0n7CsFs7oOUV72)
+
+
+<br>
+<br>
+
 ## Citation
 
 Please cite as:
