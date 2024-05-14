@@ -1,8 +1,6 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10124583.svg)](https://doi.org/10.5281/zenodo.10124583)
 
-
-
 # Intermediate python courses
 
 This repository regroups the course material of two "intermediate python"
@@ -17,7 +15,7 @@ researchers who are familiar with writing Python code and core Python elements,
 and would like to explore it further in their daily data wrangling and
 exploration tasks.
 
-Please note that the courses require that participants are already familiar
+Please note that the courses require participants to already be familiar
 with basic Python syntax, environment, and the most common commands.
 
 Topics covered in these courses include:
@@ -25,13 +23,15 @@ Topics covered in these courses include:
 **Data analysis and representation in python:**
 
 * Parsing, transforming, and exploring data using [Pandas](https://pandas.pydata.org).
-* Performing statistical simulation and testing with Numpy/Scipy.
-* Representing data in an efficient and impactful manner using Seaborn.
+* Performing statistical simulation and testing with
+  [Numpy](https://numpy.org)/[Scipy](https://scipy.org).
+* Representing data in an efficient and impactful manner using
+  [Seaborn](https://seaborn.pydata.org).
 
 **Optimizing Python Code for Better Performance:**
 
 * Assessing computational resource usage of your code.
-* Speeding-up your Python code with Numba and more.
+* Speeding-up your Python code with [Numba](https://numba.pydata.org) and more.
 
 <br>
 <br>
@@ -134,11 +134,11 @@ of `course1/` or `course2/`.
 
 ## Course recording videos
 
-We recorded  the last edition of these courses in November 2023 and organized them into two playlists:
+We recorded the last edition of these courses in November 2023 and organized
+them into two playlists:
 
- * [Data analysis and representation in python playlist](https://www.youtube.com/playlist?list=PLoCxWrRWjqB1_2WXqR7rnJ1plqp5Ma0bJ)
- * [Optimizing Python Code for Better Performance playlist](https://www.youtube.com/playlist?list=PLoCxWrRWjqB0YUVsRSA0n7CsFs7oOUV72)
-
+* [Data analysis and representation in Python playlist](https://www.youtube.com/playlist?list=PLoCxWrRWjqB1_2WXqR7rnJ1plqp5Ma0bJ)
+* [Optimizing Python Code for Better Performance playlist](https://www.youtube.com/playlist?list=PLoCxWrRWjqB0YUVsRSA0n7CsFs7oOUV72)
 
 <br>
 <br>
@@ -146,4 +146,6 @@ We recorded  the last edition of these courses in November 2023 and organized th
 ## Citation
 
 Please cite as:
-Robin Engler, & Wandrille Duchemin. (2023, November 14). Material for the intermediate python SIB-training course. Zenodo. <https://doi.org/10.5281/zenodo.10124583>
+Wandrille Duchemin, Robin Engler. (2023, November 14). Material for the
+intermediate python SIB-training course.
+Zenodo. <https://doi.org/10.5281/zenodo.10124583>
