@@ -6,7 +6,7 @@ import pandas as pd
 # ******************************************************************************
 # Micro-Exercise 1
 # ****************
-# Find the `read_table` option to read CSV files.
+# Find the optional argument of `read_table` to read CSV files.
 help(pd.read_table)
 
 df = pd.read_table("data/titanic.csv", sep=",")
@@ -17,7 +17,8 @@ df.head()
 df = pd.read_table("data/titanic.csv", sep=None, engine="python")
 df.head()
 
-# Alternatively, we can also use `pd.read_csv()`
+# Alternatively, we can also use `pd.read_csv()`, which expects CSV files by
+# default.
 df = pd.read_csv("data/titanic.csv")
 df.head()
 
@@ -33,12 +34,19 @@ df.head()
 # If we want to consider the first column, "gene", as a regular colum.
 # Note: pandas auto-detect .zip files, and so in principle `compression="zip"`
 # can also be omitted as argument.
-df = pd.read_table("data/pbmc_data.countMatrix.50.txt.zip", compression="zip", sep=" ")
+df = pd.read_table(
+    "data/pbmc_data.countMatrix.50.txt.zip",
+    compression="zip",
+    sep=" "
+)
 df.head()
 
 # If we want to consider the first column, "gene", as the row names.
 df = pd.read_table(
-    "data/pbmc_data.countMatrix.50.txt.zip", compression="zip", sep=" ", index_col=0
+    "data/pbmc_data.countMatrix.50.txt.zip",
+    compression="zip",
+    sep=" ",
+    index_col=0
 )
 # Or
 df = pd.read_table(
@@ -89,6 +97,8 @@ percent_column
 # *****************************************************************************
 # Micro-Exercise 4
 # ****************
+df = pd.read_csv("data/titanic.csv")
+
 # Select all odd rows from the Titanic data frame, as well as the columns
 # "Name", "Age" and "Fare".
 df.loc[range(1, df.shape[0], 2), ["Name", "Age", "Fare"]]
@@ -100,8 +110,8 @@ df.loc[range(1, df.shape[0], 2), ["Age", "Name", "Fare"]]
 df.iloc[range(1, df.shape[0], 2), [0, 2, 6]]
 df.iloc[range(1, df.shape[0], 2), df.columns.get_indexer(("Name", "Age", "Fare"))]
 
-# Using a conditional selection.
-df.loc[(df.index % 2) == 1, ["Name", "Age", "Fare"]]
+# Using a conditional selection (will be seen later in the class).
+df.loc[df.index % 2 == 1, ["Name", "Age", "Fare"]]
 
 # *****************************************************************************
 
@@ -112,17 +122,18 @@ df.loc[(df.index % 2) == 1, ["Name", "Age", "Fare"]]
 # Select the fare and name of passengers in first class (Pclass is 1) that
 # are less than 18 years old.
 mask = (df.Age < 18) & (df.Pclass == 1)
-mask_survived = (df.Age < 18) & (df.Pclass == 1) & (df.Survived == 1)
 df.loc[mask, ["Name", "Fare"]]
 
-# What fraction survived.
+# What fraction of these passengers survived.
+df.loc[mask, "Survived"].mean()
+df.loc[mask, ].Survived.mean()
+
+# We can also compute this fraction without using the `.mean()` method, but
+# it's slightly more work:
+mask_survived = (df.Age < 18) & (df.Pclass == 1) & (df.Survived == 1)
 df.loc[mask_survived, ].shape[0] / df.loc[mask, ].shape[0]
 # or
 sum(mask_survived) / sum(mask)
-
-# A better way to do it (but we have not seen it at this point of the notebook).
-df.loc[mask, "Survived"].mean()
-df.loc[mask, ].Survived.mean()
 
 # Number of women and children:
 mask = (df.Age < 18) | (df.Sex == "female")
@@ -139,12 +150,12 @@ for gender in ("female", "male"):
 # ****************
 # Load the titanic dataset as a DataFrame and display it for reference.
 df = pd.read_csv("data/titanic.csv")
-df.loc[[0, 1, 2, 3, 4, 10, 27],]      # List some more children.
+df.loc[[0, 1, 2, 3, 4, 10, 27],]      # List some rows with children.
 
 # Divide by 2 the fare of passengers < 10 years old.
 mask = df.Age < 10
 df.loc[mask, "Fare"] /= 2
-df.loc[[0, 1, 2, 3, 4, 10, 27],]     # List some more children.
+df.loc[[0, 1, 2, 3, 4, 10, 27],]     # List some rows with children.
 
 
 # Create a mask to filter the Swiss census 1880 dataset for towns that have a
@@ -153,7 +164,7 @@ df.loc[[0, 1, 2, 3, 4, 10, 27],]     # List some more children.
 df_census = pd.read_csv("data/swiss_census_1880.csv")
 mask = ((df_census["Italian speakers"] + df_census["Romansch speakers"]) / df_census.Total) > 0.5
 df_census.loc[mask,]
-df_census.loc[mask,"canton"].value_counts()
+df_census.loc[mask, "canton"].value_counts()
 # *****************************************************************************
 
 
@@ -176,6 +187,8 @@ def expand_port_of_embarkation(input_value):
 
 # Apply the custom function to each value of the "Embarked" column.
 df["Embarked_city"] = df["Embarked"].map(expand_port_of_embarkation)
+# Or using .apply(), which also works as we work on a single column (Series).
+df["Embarked_city"] = df["Embarked"].apply(expand_port_of_embarkation)
 df.head()
 
 
@@ -187,7 +200,7 @@ df["Embarked_city"] = df["Embarked"].map({"C": "Cherbourg", "Q": "Queenstown", "
 
 
 # *****************************************************************************
-# Micro-Exercise A4
+# Micro-Exercise A3
 # *****************
 
 def age_category(x):
