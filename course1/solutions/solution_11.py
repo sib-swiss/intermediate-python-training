@@ -10,7 +10,7 @@ df.head()
 df.Total.min()
 
 # Bonus: if we want to know which town is the smallest:
-df.loc[df.idxmin()["Total"],]
+df.loc[df.Total.idxmin(),]
 # or
 df.loc[df.Total == df.Total.min(),]
 
