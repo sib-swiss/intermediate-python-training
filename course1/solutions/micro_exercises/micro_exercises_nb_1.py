@@ -24,44 +24,8 @@ df.head()
 
 # ******************************************************************************
 
-
 # *****************************************************************************
 # Micro-Exercise 2
-# ****************
-# We can use a shell command to have a look at the file:
-#  ! zcat data/pbmc_data.countMatrix.50.txt.zip | head -n5
-
-# If we want to consider the first column, "gene", as a regular colum.
-# Note: pandas auto-detect .zip files, and so in principle `compression="zip"`
-# can also be omitted as argument.
-df = pd.read_table(
-    "data/pbmc_data.countMatrix.50.txt.zip",
-    compression="zip",
-    sep=" "
-)
-df.head()
-
-# If we want to consider the first column, "gene", as the row names.
-df = pd.read_table(
-    "data/pbmc_data.countMatrix.50.txt.zip",
-    compression="zip",
-    sep=" ",
-    index_col=0
-)
-# Or
-df = pd.read_table(
-    "data/pbmc_data.countMatrix.50.txt.zip",
-    compression="zip",
-    sep=" ",
-    index_col="gene",
-)
-df.head()
-
-# *****************************************************************************
-
-
-# *****************************************************************************
-# Micro-Exercise 3
 # ****************
 # Curate a badly formatted data set.
 
@@ -95,7 +59,7 @@ percent_column
 
 
 # *****************************************************************************
-# Micro-Exercise 4
+# Micro-Exercise 3
 # ****************
 df = pd.read_csv("data/titanic.csv")
 
@@ -117,7 +81,7 @@ df.loc[df.index % 2 == 1, ["Name", "Age", "Fare"]]
 
 
 # *****************************************************************************
-# Micro-Exercise 5
+# Micro-Exercise 4
 # ****************
 # Select the fare and name of passengers in first class (Pclass is 1) that
 # are less than 18 years old.
@@ -146,7 +110,7 @@ for gender in ("female", "male"):
 
 
 # *****************************************************************************
-# Micro-Exercise 6
+# Micro-Exercise 5
 # ****************
 # Load the titanic dataset as a DataFrame and display it for reference.
 df = pd.read_csv("data/titanic.csv")
@@ -169,7 +133,7 @@ df_census.loc[mask, "canton"].value_counts()
 
 
 # *****************************************************************************
-# Micro-Exercise 7
+# Micro-Exercise 6
 # ****************
 # Add a new column to the DataFrame that contains the full name of the port of
 # embarkation of each passenger.
