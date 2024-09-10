@@ -9,6 +9,7 @@ one-day courses of
 
  1. Data analysis and representation in python (DARPY).
  2. Optimizing Python Code for Better Performance (OPTPY).
+ 3. Interactive Visualization with Python (IVIPY)
 
 These courses are addressed to life scientists, bioinformaticians and
 researchers who are familiar with writing Python code and core Python elements,
@@ -32,6 +33,12 @@ Topics covered in these courses include:
 
 * Assessing computational resource usage of your code.
 * Speeding-up your Python code with [Numba](https://numba.pydata.org) and more.
+
+**Interactive Visualization with Python**
+
+* Create simple interactive plots and tune them to make them useful for scientific data exploration with python plotly
+* Enrich visualizations with interactive elements while keeping them easy to share as simple html files with python plotly or web assembly
+* Develop web server-based data visualization applications with plotly-dash
 
 <br>
 <br>
@@ -81,6 +88,16 @@ In addition, you should ensure you have the following libraries installed
 * [numba](https://numba.pydata.org/)
 * [cython](https://pypi.org/project/Cython/)
 * [memory-profiler](https://pypi.org/project/memory-profiler/)
+
+**Course 3 - Interactive Visualization with Python:**
+
+* [pandas](https://pandas.pydata.org)
+* [plotly](httpplotlys://plotly.com/python/getting-started/)
+* [plotly-dash](https://dash.plotly.com/installation)
+
+
+
+
 
 <br>
 <br>
