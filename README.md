@@ -154,8 +154,8 @@ of `course1/` or `course2/`.
 We recorded the last edition of these courses in November 2023 and organized
 them into two playlists:
 
-* [Data analysis and representation in Python playlist](https://www.youtube.com/playlist?list=PLoCxWrRWjqB1_2WXqR7rnJ1plqp5Ma0bJ)
-* [Optimizing Python Code for Better Performance playlist](https://www.youtube.com/playlist?list=PLoCxWrRWjqB0YUVsRSA0n7CsFs7oOUV72)
+* [Data analysis and representation in Python playlist](https://www.youtube.com/playlist?list=PLxHnvy2HZSYnfsgyi2fFwY-ZV-i5qzTed)
+* [Optimizing Python Code for Better Performance playlist](https://www.youtube.com/playlist?list=PLxHnvy2HZSYlqefw9OXwV77vB4DNC4tjP)
 
 <br>
 <br>
