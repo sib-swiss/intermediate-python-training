@@ -1,0 +1,218 @@
+
+
+## first some code to assign colors to cluster arrangments
+
+import matplotlib.colors as mcolors
+
+colors = list( mcolors.TABLEAU_COLORS.values() )
+color_dict = {}
+for i,lbl in enumerate(set(labels.astype(str))):
+    color_dict[ lbl ] = colors[i]
+color_list = [ color_dict[l] for l in labels.astype(str) ]
+
+
+def give_colors(lbls):
+    colors = list( mcolors.TABLEAU_COLORS.values() )
+
+    color_dict = {}
+    for i,lbl in enumerate(set(lbls)):
+        color_dict[ lbl ] = colors[i]
+    
+    return [ color_dict[l] for l in lbls ]
+    
+
+
+## "base" representation
+##   * true label as the plotting symbol (I use the text argument for this)
+##   * color based on cluster assignment 
+##   * custom hover showing both assignment type
+
+import plotly.graph_objects as go
+import numpy as np
+
+cluster_assigment = Kmeans(data , k=5 )
+
+fig = go.Figure()
+
+fig.add_trace(
+    go.Scatter( x = df_umap.UMAP0 , 
+               y = df_umap.UMAP1  , 
+               mode='text', 
+               opacity = 0.5,
+               textfont_color=  give_colors( cluster_assigment )  , 
+               text = df_umap.labels.astype(str) ,
+               customdata = np.array( [ df_umap.labels , cluster_assigment ] ).transpose(),  
+               hovertemplate = "<b>label: %{customdata[0]}</b><br>"+
+                               "<b>cluster: %{customdata[1]}</b><br>" 
+              )
+)
+
+
+
+## V2 : added a slider to change K
+## basically this has 1 trace for each value of K
+## and we toggle visibility of the trace depending on the slider
+
+import plotly.graph_objects as go
+
+fig = go.Figure()
+for K in range(2,11):
+    
+    cluster_assigment = Kmeans(data , K)
+    
+    fig.add_trace(
+        go.Scatter(
+                visible= (i==3),
+                x = df_umap.UMAP0 , 
+                y = df_umap.UMAP1  , 
+                mode='text', 
+                opacity = 0.75,
+                textfont_color=  give_colors( cluster_assigment )  , 
+                text = df_umap.labels.astype(str) ,
+                customdata = np.array( [ df_umap.labels , cluster_assigment ] ).transpose(),  
+                hovertemplate = "<b>label: %{customdata[0]}</b><br>"+
+                                "<b>cluster: %{customdata[1]}</b><br>" 
+              )
+    )
+
+
+
+
+
+
+slider_steps = []
+for i in range( len(fig.data) ):
+    step = dict(
+        method="update",
+        args=[{"visible": [False] * len(fig.data)},
+              {"title": "K= " + str(i+2)}],  # layout attribute
+        label = str(i+2)
+    )
+    
+    step["args"][0]["visible"][i] = True  # Toggle i'th trace to "visible" 
+    slider_steps.append(step)
+
+
+
+sliders = [dict(
+    active=1,
+    currentvalue={"prefix": "K="},
+    pad={"t": 50},
+    steps=slider_steps
+)]
+
+fig.update_layout(
+    sliders=sliders
+)
+
+fig
+
+
+## V3 : add a dropdown to toggle between UMAP and PCA
+## 
+
+## precompute assignment and colors
+assignment_by_K = {}
+colors_by_K = {}
+for K in range(2,11):
+    assignment_by_K[ K ] = Kmeans(data , K)
+    colors_by_K[ K ] = give_colors( assignment_by_K[ K ] )
+    
+
+# I create only 2 traces. 
+# * the dropdown will switch their visibility
+# * the slider with update the text color and custom data (for the hover template)
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(
+                visible= True,
+                x = df_umap.UMAP0 , 
+                y = df_umap.UMAP1, 
+                mode='text', 
+                opacity = 0.75,
+                textfont_color=  colors_by_K[3]  , 
+                text = df_umap.labels.astype(str) ,
+                customdata = np.array( [ df_umap.labels , assignment_by_K[3] ] ).transpose(),  
+                hovertemplate = "<b>label: %{customdata[0]}</b><br>"+
+                                "<b>cluster: %{customdata[1]}</b><br>" 
+))
+fig.add_trace(go.Scatter(
+                visible= False,
+                x = df_pca.PC0 , 
+                y = df_pca.PC1, 
+                mode='text', 
+                opacity = 0.75,
+                textfont_color=  colors_by_K[3]  , 
+                text = df_pca.labels.astype(str) ,
+                customdata = np.array( [ df_pca.labels , assignment_by_K[3] ] ).transpose(),  
+                hovertemplate = "<b>label: %{customdata[0]}</b><br>"+
+                                "<b>cluster: %{customdata[1]}</b><br>" 
+))
+
+
+## creating sliders to select K
+D = fig.to_dict()
+
+slider_steps = []
+
+for i in colors_by_K.keys():
+    step = dict(
+        method="update",
+        args=[{ "textfont": [ deepcopy( D['data'][0]['textfont'] ) ] ,
+                'customdata': [np.array( [ df_pca.labels , assignment_by_K[i] ] ).transpose() ]
+              }],
+        label = str(i)
+    )
+    
+    step["args"][0]["textfont"][0]['color'] = colors_by_K[i]
+    slider_steps.append(step)
+
+sliders = [dict(
+    active=1,
+    currentvalue={"prefix": "K="},
+    pad={"t": 50},
+    steps=slider_steps
+)]
+
+
+fig.update_layout(
+    sliders=sliders
+)
+
+    
+fig.update_layout(
+    updatemenus=[
+        dict(
+            active=0,
+            buttons=[
+                dict(label='umap',
+                     method='update',
+                     args=[dict(visible = [True,False]),
+                           dict(title = 'UMAP',
+                               xaxis = dict(title='umap0'),
+                               yaxis = dict(title='umap1'))],
+                    ),
+                dict(label='PCA',
+                     method='update',
+                     args=[dict(visible = [False,True]),
+                           dict(title = 'PCA',
+                                xaxis = dict(title='PC0'),
+                                yaxis = dict(title='PC1'))],
+                     
+                    )
+            ],        
+            direction="right",
+            pad={"r": 10, "t": 10},
+            showactive=True,
+            x=0,
+            xanchor="left",
+            y=1,
+            yanchor="bottom"
+        ),
+    ],
+    title="Plot Title",
+    xaxis_title="X Axis Title",
+    yaxis_title="Y Axis Title"
+)
+fig
+
