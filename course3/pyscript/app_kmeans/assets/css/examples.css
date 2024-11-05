@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+}
+
+.pyscript {
+    margin: 0.5rem;
+}
+
+html {
+    font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        "Noto Sans",
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+    line-height: 1.5;
+}
+
+nav {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.logo {
+    padding-right: 10px;
+    font-size: 28px;
+    height: 30px;
+    max-width: inherit;
+}
+
+.title {
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    font-weight: 400;
+    font-size: 1.5em;
+    line-height: 2em;
+    white-space: nowrap;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
