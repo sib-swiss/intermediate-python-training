@@ -3,18 +3,15 @@
 import numpy as np
 import pandas as pd
 
+
 # ******************************************************************************
 # Micro-Exercise 1
 # ****************
-# Find the optional argument of `read_table` to read CSV files.
+# Find the optional argument of `read_table()` that allows to specify "," as
+# a custom field separator to read CSV files.
 help(pd.read_table)
 
 df = pd.read_table("data/titanic.csv", sep=",")
-df.head()
-
-# Note that by setting "sep=None", it is possible to ask pandas to try and
-# auto-detect the separator.
-df = pd.read_table("data/titanic.csv", sep=None, engine="python")
 df.head()
 
 # Alternatively, we can also use `pd.read_csv()`, which expects CSV files by
@@ -22,9 +19,14 @@ df.head()
 df = pd.read_csv("data/titanic.csv")
 df.head()
 
+# Finally, by setting "sep=None", it is possible to ask pandas to try and
+# auto-detect the separator.
+df = pd.read_table("data/titanic.csv", sep=None, engine="python")
+df.head()
 # ******************************************************************************
 
-# *****************************************************************************
+
+# ******************************************************************************
 # Micro-Exercise 2
 # ****************
 # Curate a badly formatted data set.
@@ -54,11 +56,10 @@ percent_column
 # Benchmarking:
 %timeit percent_column.str.strip("%").astype(int)
 %timeit pd.Series([int(x.strip("%")) for x in percent_column])
+# ******************************************************************************
 
-# *****************************************************************************
 
-
-# *****************************************************************************
+# ******************************************************************************
 # Micro-Exercise 3
 # ****************
 df = pd.read_csv("data/titanic.csv")
@@ -77,10 +78,10 @@ df.iloc[range(1, df.shape[0], 2), df.columns.get_indexer(("Name", "Age", "Fare")
 # Using a conditional selection (will be seen later in the class).
 df.loc[df.index % 2 == 1, ["Name", "Age", "Fare"]]
 
-# *****************************************************************************
+# ******************************************************************************
 
 
-# *****************************************************************************
+# ******************************************************************************
 # Micro-Exercise 4
 # ****************
 # Select the fare and name of passengers in first class (Pclass is 1) that
@@ -106,10 +107,10 @@ print("Number of women and children:", df.loc[mask, ].shape[0])
 # Compute the median ticket price for men and women.
 for gender in ("female", "male"):
     print(f"Median ticket price for {gender}", df.loc[df.Sex == gender, "Fare"].median())
-# *****************************************************************************
+# ******************************************************************************
 
 
-# *****************************************************************************
+# ******************************************************************************
 # Micro-Exercise 5
 # ****************
 # Load the titanic dataset as a DataFrame and display it for reference.
@@ -129,10 +130,10 @@ df_census = pd.read_csv("data/swiss_census_1880.csv")
 mask = ((df_census["Italian speakers"] + df_census["Romansch speakers"]) / df_census.Total) > 0.5
 df_census.loc[mask,]
 df_census.loc[mask, "canton"].value_counts()
-# *****************************************************************************
+# ******************************************************************************
 
 
-# *****************************************************************************
+# ******************************************************************************
 # Micro-Exercise 6
 # ****************
 # Add a new column to the DataFrame that contains the full name of the port of
@@ -160,10 +161,10 @@ df.head()
 # of .map() to directly take a dictionary as input argument (instead of a
 # function).
 df["Embarked_city"] = df["Embarked"].map({"C": "Cherbourg", "Q": "Queenstown", "S": "Southampton"})
-# *****************************************************************************
+# ******************************************************************************
 
 
-# *****************************************************************************
+# ******************************************************************************
 # Micro-Exercise A3
 # *****************
 
@@ -184,4 +185,4 @@ dfc["Age_category"] = df["Age"].apply(age_category)
 
 # Compute survival rates by gender, age category and passenger class.
 dfc.groupby(["Sex", "Age_category", "Pclass"]).mean()
-# *****************************************************************************
+# ******************************************************************************
