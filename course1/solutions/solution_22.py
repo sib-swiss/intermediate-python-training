@@ -1,5 +1,6 @@
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 # Load the input data as a pandas DataFrame
 df_census = pd.read_csv("data/swiss_census_1880.csv")
