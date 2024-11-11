@@ -12,13 +12,12 @@ df.head()
 # Compute the mean fare for each passenger class (Pclass).
 for pclass in sorted(df.Pclass.unique()):
     mask = df.Pclass == pclass
-    print(f"Mean fare for passengers in class {pclass}:", df.loc[mask, "Fare"].mean())
+    print(f"Mean fare in class {pclass}:", df.loc[mask, "Fare"].mean())
 
 # A shorter way to obtain the same result (but that we have not seen yet),
 # is to use the `.groupby()` method.
 df.groupby("Pclass")["Fare"].mean()
 df.groupby("Pclass").Fare.mean()
-
 # ******************************************************************************
 
 
@@ -38,8 +37,9 @@ col_sums = df_sc.sum()
 
 # 2. Normalize each column by dividing its values by the column-wise sum.
 df_normalized = df_sc / col_sums
-print("Are all columns sums == 1 after normalization:", all(df_normalized.sum() > 0.99))
 
+# Make sure all columns now sum to 1:
+df_normalized.sum()
 # ******************************************************************************
 
 
