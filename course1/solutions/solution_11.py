@@ -32,16 +32,17 @@ df.loc[df.Total == df.Total.min(),]
 
 # 4. Which fraction of the population live in a town with more than 1'000
 #    inhabitants?
-cities = df.Total[df.Total > 1000]  # Selecting town with >1000 inhabitants.
-print("Total number of people in towns with > 1'000 inhabitants:", cities.sum())
+cities = df.Total[df.Total > 1000]  # Selecting towns with >1000 inhabitants.
+print("Total people in towns with > 1'000 inhabitants:", cities.sum())
 print(
-    "Fraction of the population in towns with > 1'000 inhabitants:",
+    "Fraction of population in towns with > 1'000 inhabitants:",
     cities.sum() / df.Total.sum(),
 )
 
 # Same, but in a single expression:
 df.loc[df.Total > 1000, "Total"].sum() / df.Total.sum()
-
+# or (this second version is slightly more efficient to compute)
+df.Total[df.Total > 1000].sum() / df.Total.sum()
 
 # 5. How many town have more than 50% of their population speaking french?
 #    Number of french speaker / number of people = fraction of french people in each town.
