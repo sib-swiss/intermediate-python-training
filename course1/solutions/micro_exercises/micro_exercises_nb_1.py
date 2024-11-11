@@ -39,6 +39,7 @@ print("Type of the Series:", percent_column.dtype)
 
 # Solution using pandas DataFrame methods.
 new_column = percent_column.str.strip("%").astype(int)
+new_column = percent_column.str.replace("%", "").astype(int)
 print("Type of the Series:", new_column.dtype)
 new_column.head()
 
@@ -55,7 +56,8 @@ percent_column
 
 # Benchmarking:
 %timeit percent_column.str.strip("%").astype(int)
-%timeit pd.Series([int(x.strip("%")) for x in percent_column])
+%timeit percent_column.str.replace("%", "").astype(int)
+%timeit pd.Series([int(x.strip("%")) for x in percent_column])  # Fastest !!
 # ******************************************************************************
 
 
@@ -87,7 +89,7 @@ df.loc[df.index % 2 == 1, ["Name", "Age", "Fare"]]
 # Select the fare and name of passengers in first class (Pclass is 1) that
 # are less than 18 years old.
 mask = (df.Age < 18) & (df.Pclass == 1)
-df.loc[mask, ["Name", "Fare"]]
+df.loc[mask,]
 
 # What fraction of these passengers survived.
 df.loc[mask, "Survived"].mean()
@@ -104,9 +106,13 @@ sum(mask_survived) / sum(mask)
 mask = (df.Age < 18) | (df.Sex == "female")
 print("Number of women and children:", df.loc[mask, ].shape[0])
 
-# Compute the median ticket price for men and women.
+# Compute the median ticket price and age for men and women.
 for gender in ("female", "male"):
-    print(f"Median ticket price for {gender}", df.loc[df.Sex == gender, "Fare"].median())
+    print(f"Median ticket price for {gender}:", df.loc[df.Sex == gender, "Fare"].median())
+    print(f"Median age of {gender}:", df.loc[df.Sex == gender, "Age"].median())
+
+# Median ticket price and age for men and women, using the `.groupby()` method.
+df.groupby("Sex")[["Fare", "Age"]].median()
 # ******************************************************************************
 
 
@@ -115,12 +121,13 @@ for gender in ("female", "male"):
 # ****************
 # Load the titanic dataset as a DataFrame and display it for reference.
 df = pd.read_csv("data/titanic.csv")
-df.loc[[0, 1, 2, 3, 4, 10, 27],]      # List some rows with children.
+df.loc[[0, 1, 2, 3, 4, 10, 27],]      # Display some rows with children and
+                                      # some with adults.
 
 # Divide by 2 the fare of passengers < 10 years old.
 mask = df.Age < 10
 df.loc[mask, "Fare"] /= 2
-df.loc[[0, 1, 2, 3, 4, 10, 27],]     # List some rows with children.
+df.loc[[0, 1, 2, 3, 4, 10, 27],]  # Display some rows with children and adults.
 
 
 # Create a mask to filter the Swiss census 1880 dataset for towns that have a
