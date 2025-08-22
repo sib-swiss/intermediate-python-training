@@ -111,6 +111,8 @@ fig
 ## V3 : add a dropdown to toggle between UMAP and PCA
 ## 
 
+from copy import deepcopy
+
 ## precompute assignment and colors
 assignment_by_K = {}
 colors_by_K = {}
