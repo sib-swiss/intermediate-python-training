@@ -101,11 +101,11 @@ In addition, you should ensure you have the following libraries installed
 <br>
 <br>
 
-Alternatively, you can use the following files to create dedicated conda or venv environments:
+Alternatively, you can use the following files to create dedicated [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) or [venv](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments) environments:
 
- * course 1 : [environment.yaml](course1/requirements.txt), [requirements.txt](course1/requirements.txt)
- * course 2 : [environment.yaml](course2/requirements.txt), [requirements.txt](course2/requirements.txt)
- * course 3 : [environment.yaml](course3/requirements.txt), [requirements.txt](course3/requirements.txt)
+ * course 1 : [environment.yaml](course1/environment.yaml), [requirements.txt](course1/requirements.txt)
+ * course 2 : [environment.yaml](course2/environment.yaml), [requirements.txt](course2/requirements.txt)
+ * course 3 : [environment.yaml](course3/environment.yaml), [requirements.txt](course3/requirements.txt)
 
 
 ## Course material organization
