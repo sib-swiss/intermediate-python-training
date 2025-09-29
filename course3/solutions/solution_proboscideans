@@ -1,64 +1,83 @@
-## V1 : map of fossils with a slider
-
 import plotly.graph_objects as go
 import numpy as np
 
 # Create figure
 fig = go.Figure()
 
-## add static shoreline view
+## add shoreline view
+fig.add_trace( go.Scatter( x=coastlines.lon, y=coastlines.lat,  mode='lines',
+                           showlegend = False, # no legend 
+                           hoverinfo = 'none'  # no hoverinfo for coastlines
+                         )
+             )
 
-fig.add_trace( go.Scatter( visible=True, x=coastlines.lon, y=coastlines.lat,  mode='lines') )
 
 
-
-# Add traces, one for each slider step
-# from -60 million years to 1 million years ago, by steps of 100 000 years
-for step in np.arange(-60, 0.1, 1):
-
-    ## get which fossils are compatibles
-    mask = (df.max_ma > -(step)) & (df.min_ma < -(step))
-    temp_df = df.loc[mask, :]
-
-    ## add a corresponding trace
-    fig.add_trace(
-        go.Scatter(
-            visible=False,
-            x=temp_df['lng'], y=temp_df['lat'], 
-            opacity=0.75 , mode='markers'
-        )
-    )
-
-# Make 10th trace visible
-fig.data[10].visible = True
-
-# Create and add slider
-steps = []
-for i ,T in enumerate( np.arange(-60, 0.1, 1)):
-    step = dict(
-        method="update",
-        args=[{"visible": [True] + [False] * len(fig.data)}, # the first trace is always visible: it is the shorelines
-              {"title": "Slider switched to step: " + str(i)}],  # layout attribute
-        label = str(T)
-    )
+def make_label(row):
+    return f"{row.accepted_name} ({row.identified_rank})<br>" + f"{row.max_ma:.1f}MYA - {row.min_ma:.1f}MYA"
     
-    step["args"][0]["visible"][i+1] = True  # Toggle i'th trace to "visible"
-    steps.append(step)
 
-sliders = [dict(
-    active=10,
-    currentvalue={"prefix": "Mya: "},
-    pad={"t": 50},
-    steps=steps
-)]
-
-fig.update_layout(
-    sliders=sliders
-)
+## add fossils
+fig.add_trace( go.Scatter( x=df['lng'],
+                           y=df['lat'], 
+                           opacity=0.75 , 
+                           mode='markers',
+                           hovertemplate = "%{text}<br>"+ # custom label
+                                         "coords : (%{y:.1f}N, %{x:.1f}E)" ,
+                         text = [make_label(row) for i,row in  df.iterrows()]
+                           
+                         )
+             )
 
 fig
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
+import numpy as np
 
 
+# Create figure with subplots
+fig = make_subplots(rows=1, cols=2)
+
+
+### subplot 1
+
+# coastlines
+fig.add_trace( go.Scatter( visible=True, 
+                          x=coastlines.lon, y=coastlines.lat,
+                          mode='lines',
+                          showlegend=False,
+                          hoverinfo="none" 
+                         ) ,
+              row=1, col=1  # this is how we say in which subplot this traces goes
+             )
+def make_label(row):
+    return f"{row.accepted_name} ({row.identified_rank})<br>" + f"{row.max_ma:.1f}MYA - {row.min_ma:.1f}MYA"
+    
+
+# add fossils
+fig.add_trace( go.Scatter( x=df['lng'],
+                           y=df['lat'], 
+                           opacity=0.75 , 
+                           mode='markers',
+                           hovertemplate = "%{text}<br>"+ # custom label
+                                         "coords : (%{y:.1f}N, %{x:.1f}E)" ,
+                         text = [make_label(row) for i,row in  df.iterrows()]
+                           
+                         ),
+              row=1, col=1
+             )
+
+
+### subplot 2
+R = np.arange(-60, 0.1, 1) ## define a timeline, from -60MYA to now
+nG = [df.loc[ (df.max_ma > -T) & (df.min_ma < -T) , 'genus' ].nunique() for T in R] ## count number of genus at each time
+
+fig.add_trace( go.Scatter( x=R, 
+                           y=nG, 
+                           mode='lines',showlegend=False),
+                           row=1, col=2) 
+
+fig
 
 ## V2 : map and line of the number of genus
 from plotly.subplots import make_subplots
