@@ -1,5 +1,7 @@
 {
   "title": "Material for the intermediate python SIB-training course",
+  "license": "cc-by-4.0",
+  "upload_type": "lesson",
   "keywords": [
     "programming",
     "python",
@@ -8,12 +10,14 @@
   ],
   "creators": [
     {
-      "name": "Robin Engler",
-      "affiliation": "SIB Swiss Institute of Bioinformatics"
+      "name": "Engler, Robin",
+      "affiliation": "SIB Swiss Institute of Bioinformatics",
+      "orcid": "0009-0001-7090-6196"
     },
     {
-      "name": "Wandrille Duchemin",
-      "affiliation": "SIB Swiss Institute of Bioinformatics"
+      "name": "Duchemin, Wandrille",
+      "affiliation": "SIB Swiss Institute of Bioinformatics",
+      "orcid": "0000-0001-8854-7235"
     }   
   ]
 }
