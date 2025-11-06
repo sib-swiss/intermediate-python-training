@@ -1,0 +1,18 @@
+notebook
+matplotlib
+numpy
+scipy
+
+# DARPY requirements
+pandas
+seaborn
+statsmodels
+
+# OPTPY requirements
+memory-profiler
+numba
+cython
+
+# IVIPY requirements
+plotly
+kmeans

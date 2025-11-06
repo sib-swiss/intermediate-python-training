@@ -1,0 +1,19 @@
+[project]
+name = "intermediate-python"
+version = "1.0.0"
+description = "Intermediate Python SIB course"
+requires-python = ">=3.12"
+dependencies = [
+    "cython",
+    "kmeans",
+    "matplotlib",
+    "memory-profiler",
+    "notebook",
+    "numba",
+    "numpy",
+    "pandas",
+    "plotly",
+    "scipy",
+    "seaborn",
+    "statsmodels",
+]
