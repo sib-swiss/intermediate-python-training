@@ -1,27 +1,33 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14196797.svg)](https://doi.org/10.5281/zenodo.14196797)
 
-# Intermediate python courses
+# Intermediate python
 
-This repository regroups the course material of two "intermediate python"
+This repository regroups the course material of 3 "intermediate python"
 one-day courses of
 [SIB Training](https://www.sib.swiss/training/upcoming-training-courses):
 
  1. Data analysis and representation in python (DARPY).
  2. Optimizing Python Code for Better Performance (OPTPY).
- 3. Interactive Visualization with Python (IVIPY)
+ 3. Interactive Visualization with Python (IVIPY).
 
 These courses are addressed to life scientists, bioinformaticians and
 researchers who are familiar with writing Python code and core Python elements,
 and would like to explore it further in their daily data wrangling and
 exploration tasks.
 
-Please note that the courses require participants to already be familiar
-with basic Python syntax, environment, and the most common commands.
+Please note that the courses require participants to
+**already be familiar with basic Python** syntax, environment, and the most
+common commands.
 
-Topics covered in these courses include:
+<br>
+<br>
 
-**Data analysis and representation in python:**
+## Course description
+
+Topics covered in these courses are the following.
+
+### Data analysis and representation in Python (DARPY)
 
 * Parsing, transforming, and exploring data using [Pandas](https://pandas.pydata.org).
 * Performing statistical simulation and testing with
@@ -29,17 +35,21 @@ Topics covered in these courses include:
 * Representing data in an efficient and impactful manner using
   [Seaborn](https://seaborn.pydata.org).
 
-**Optimizing Python Code for Better Performance:**
+<br>
+
+### Optimizing Python Code for Better Performance (OPTPY)
 
 * Assessing computational resource usage of your code.
 * Speeding-up your Python code with [Numba](https://numba.pydata.org) and more.
 
-**Interactive Visualization with Python:**
+<br>
+
+### Interactive Visualization with Python (IVIPY)
 
 * Create simple interactive plots and tune them to make them useful for
-  scientific data exploration with python plotly.
+  scientific data exploration with Python [plotly](https://plotly.com/python).
 * Enrich visualizations with interactive elements while keeping them easy to
-  share as simple html files with python plotly or web assembly.
+  share as simple html files with Python plotly or web assembly.
 * Develop web server-based data visualization applications with plotly-dash.
 
 <br>
@@ -169,5 +179,6 @@ them into two playlists:
 ## Citation
 
 Please cite as:
-Engler, R. Duchemin, W. & García, J. (2024, November 12). Material for the intermediate python SIB-training course. Zenodo. <https://doi.org/10.5281/zenodo.14196797>
-
+Engler, R. Duchemin, W. & García, J. (2024, November 12). Material for the
+intermediate python SIB-training course. Zenodo.
+<https://doi.org/10.5281/zenodo.14196797>
