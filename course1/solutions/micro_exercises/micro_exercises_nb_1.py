@@ -7,27 +7,76 @@ import pandas as pd
 # ******************************************************************************
 # Micro-Exercise 1
 # ****************
-# Find the optional argument of `read_table()` that allows to specify "," as
-# a custom field separator to read CSV files.
-help(pd.read_table)
-
+# Since read_table expects tab-delimited files by default, we must pass the
+# argument `sep=","` when loading a CSV file.
 df = pd.read_table("data/titanic.csv", sep=",")
 df.head()
 
-# Alternatively, we can also use `pd.read_csv()`, which expects CSV files by
-# default.
-df = pd.read_csv("data/titanic.csv")
-df.head()
-
-# Finally, by setting "sep=None", it is possible to ask pandas to try and
-# auto-detect the separator.
+# Alternatively, we could also set "sep=None" to let Pandas auto-detect
+# the type of separator.
 df = pd.read_table("data/titanic.csv", sep=None, engine="python")
 df.head()
+
+# Display the first 5 and last 3 lines.
+df.head()
+df.tail(3)
 # ******************************************************************************
 
 
 # ******************************************************************************
 # Micro-Exercise 2
+# ****************
+# Adding columns to a DataFrame.
+
+# Create the initial DataFrame.
+size_data = {
+    "Name": ["Alice", "Bob", "Jim", "Zoe"],
+    "Height": [163, 180, 172, 173],
+    "Weight": [58, 97, 63, 60],
+}
+df_size = pd.DataFrame(size_data)
+
+# Add columns and "Age" column.
+df_size["Age"] = 23
+
+# Add a "BMI" column.
+height = df_size["Height"]
+weight = df_size["Weight"]
+df_size["BMI"] = weight / height ** 2
+# Alternatively:
+df_size["BMI"] = df_size.Weight / df_size.Height ** 2
+
+# Additional Task:
+df_size_copy = df_size[ ["Age", "BMI"] ]
+df_size_copy.index = df_size["Name"]
+df_size_copy
+# ******************************************************************************
+
+
+# ******************************************************************************
+# Micro-Exercise 3
+# ****************
+# Adding columns to a DataFrame.
+
+# Load the DataFrame.
+df = pd.read_csv("data/titanic.csv")
+df.head()
+
+# Delete columns.
+df_copy = df.drop(columns=["Name", "Sex"])
+
+# Delete rows.
+df_copy.drop(index=range(1, len(df.index), 2), inplace=True)
+
+# Note: to generate the sequence of rows to delete, we can use:
+range(1, len(df.index), 2)
+range(1, df.shape[0], 2)
+range(1, df.index[-1] + 1, 2)
+# ******************************************************************************
+
+
+# ******************************************************************************
+# Micro-Exercise 4
 # ****************
 # Curate a badly formatted data set.
 
@@ -58,11 +107,15 @@ percent_column
 %timeit percent_column.str.strip("%").astype(int)
 %timeit percent_column.str.replace("%", "").astype(int)
 %timeit pd.Series([int(x.strip("%")) for x in percent_column])  # Fastest !!
+
+
+# Rename the categories of the "Embarked" column to full city names.
+df["Embarked"].astype("category").cat.rename_categories({"C": "Cherbourg", "Q": "Queenstown", "S": "Southampton"})
 # ******************************************************************************
 
 
 # ******************************************************************************
-# Micro-Exercise 3
+# Micro-Exercise 5
 # ****************
 df = pd.read_csv("data/titanic.csv")
 
@@ -84,7 +137,7 @@ df.loc[df.index % 2 == 1, ["Name", "Age", "Fare"]]
 
 
 # ******************************************************************************
-# Micro-Exercise 4
+# Micro-Exercise 6
 # ****************
 # Select the fare and name of passengers in first class (Pclass is 1) that
 # are less than 18 years old.
@@ -117,7 +170,7 @@ df.groupby("Sex")[["Fare", "Age"]].median()
 
 
 # ******************************************************************************
-# Micro-Exercise 5
+# Micro-Exercise 7
 # ****************
 # Load the titanic dataset as a DataFrame and display it for reference.
 df = pd.read_csv("data/titanic.csv")
@@ -141,7 +194,7 @@ df_census.loc[mask, "canton"].value_counts()
 
 
 # ******************************************************************************
-# Micro-Exercise 6
+# Micro-Exercise 8
 # ****************
 # Add a new column to the DataFrame that contains the full name of the port of
 # embarkation of each passenger.
