@@ -26,6 +26,7 @@ df.Total.min()
 
 # Bonus: if we want to know which town is the least populated:
 df.loc[df.Total.idxmin(),]
+df.loc[[df.Total.idxmin()],]  # Same as above, but display as DataFrame, not as Series.
 # or
 df.loc[df.Total == df.Total.min(),]
 
