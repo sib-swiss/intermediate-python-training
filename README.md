@@ -1,5 +1,5 @@
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14196797.svg)](https://doi.org/10.5281/zenodo.14196797)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17657932.svg)](https://doi.org/10.5281/zenodo.17657932)
 
 # Intermediate python
 
@@ -179,6 +179,5 @@ them into two playlists:
 ## Citation
 
 Please cite as:
-Engler, R. Duchemin, W. & García, J. (2024, November 12). Material for the
-intermediate python SIB-training course. Zenodo.
-<https://doi.org/10.5281/zenodo.14196797>
+
+Duchemin, W., Engler, R., & Yepes García, J. (2025, November 20). Material for the intermediate python SIB-training course. Zenodo. [https://doi.org/10.5281/zenodo.17657932](https://doi.org/10.5281/zenodo.17657932)
