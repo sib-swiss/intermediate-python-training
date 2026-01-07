@@ -15,7 +15,11 @@ df = pd.read_csv("data/titanic.csv")
 sns.histplot(df["Age"], bins=np.arange(0, 85, 2.5))
 
 
-# 2. Create a figure with 3 panels. In the panels, plot the histogram of the
+# 2. add a vertical line at 18 year old to the plot
+ax = sns.histplot(df["Age"], bins=np.arange(0, 85, 2.5))
+ax.axvline(x=18,color='grey')
+
+# extra: Create a figure with 3 panels. In the panels, plot the histogram of the
 # `Fare` among passengers in first, second, and third class, respectively.
 # Note the usage of the `sharex=True` option to have the same x-axis range
 # across all subplots.
