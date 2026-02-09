@@ -167,11 +167,12 @@ of `course1/` or `course2/`.
 
 ## Course recording videos
 
-We recorded the last edition of these courses in November 2023 and organized
-them into two playlists:
+We recorded the an edition of the first two courses in November 2023, and the third in November 2025 and organized
+them into three playlists:
 
 * [Data analysis and representation in Python playlist](https://www.youtube.com/playlist?list=PLxHnvy2HZSYnfsgyi2fFwY-ZV-i5qzTed)
 * [Optimizing Python Code for Better Performance playlist](https://www.youtube.com/playlist?list=PLxHnvy2HZSYlqefw9OXwV77vB4DNC4tjP)
+* [Interactive Visualization with Python](https://www.youtube.com/playlist?list=PLxHnvy2HZSYnz-aauumQdr4Xbq40HW2e9)
 
 <br>
 <br>
