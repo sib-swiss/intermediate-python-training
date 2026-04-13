@@ -104,9 +104,11 @@ print("Type of the Series:", percent_column.dtype)
 percent_column
 
 # Benchmarking:
-%timeit percent_column.str.strip("%").astype(int)
+# For a more realistic benchmarking, we use a Series with more values (100'000).
+percent_column = pd.Series(np.random.randint(0,100,100_000), dtype="str") + '%'
+%timeit percent_column.str.strip("%").astype(int)               # Fastest !!
 %timeit percent_column.str.replace("%", "").astype(int)
-%timeit pd.Series([int(x.strip("%")) for x in percent_column])  # Fastest !!
+%timeit pd.Series([int(x.strip("%")) for x in percent_column])
 
 
 # Rename the categories of the "Embarked" column to full city names.
