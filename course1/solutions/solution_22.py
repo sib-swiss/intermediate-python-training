@@ -21,3 +21,21 @@ sns.catplot(x="Catholic",
                        'Romanche speakers' : '#FFC107'},
             aspect=2, height=7, )
 plt.grid()
+
+
+# Alternative representation.
+sns.displot(
+    x="Catholic", 
+    hue="majority language", 
+    data=df_census, 
+    kind="kde",
+    cut = 0, 
+    palette = {
+        'German speakers' : '#D81B60',
+        'French speakers' : '#1E88E5',
+        'Italian speakers' : '#004D40',
+        'Romanche speakers' : '#FFC107'
+    },
+    aspect=2,
+    height=5,
+)
